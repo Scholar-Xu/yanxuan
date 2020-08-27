@@ -1,0 +1,20 @@
+.opt_title {
+    background-color: #F20009;
+}
+.price_details .big_font {
+    color: #e01222;
+}
+.price_details .dis_time {
+    width: 100%;
+}
+.price_details .time {
+    font-size: 22px;
+    color: #e01222;
+}
+.opt_btn a {
+    width: 177px;
+    height: 48px;
+    background: #e01222;
+    border: 1px solid #b39f78;
+    color: #fff;
+}

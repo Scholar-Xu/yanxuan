@@ -1,0 +1,194 @@
+.s_cart {
+    padding-top: 30px; 
+}
+.cart_tit {
+    width: 1198px;
+    height: 48px;
+    border: 1px solid #e8e8e8;
+    background: #f7f7f7;
+}
+.cart_tit li {
+    float: left;
+    line-height: 48px;
+}
+.cart_tit li input {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-top: 15px;
+    margin-left: 14px;
+    margin-right: 10px;
+}
+.cart_tit li:nth-of-type(1){
+    margin-right: 98px;
+}
+.cart_tit li:nth-of-type(2){
+    margin-right: 386px;
+}
+.cart_tit li:nth-of-type(3){
+    margin-right: 142px;
+}
+.cart_tit li:nth-of-type(4){
+    margin-right: 138px;
+}
+.cart_tit li:nth-of-type(5) {
+    margin-right: 150px;
+}
+.cart_nav {
+    width: 1198px;
+    height: 36px;
+    border: 0px solid #e8e8e8;
+    margin-bottom: -20px;
+}
+.cart_nav li {
+    float: left;
+    line-height: 36px;
+}
+.cart_nav li input {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 14px;
+    margin-right: 10px;
+}
+.cart_list {
+    padding-top: 5px;
+}
+.cart_list li {
+    width: 1198px;
+    height: 93px;
+    border: 1px solid #e8e8e8;
+    padding-top: 16px;
+    margin-top: 10px;
+}
+.cart_list li:hover {
+    background: #FCF7F2;
+}
+.cart_list li input {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin: 29px 0 0 14px;
+    font-family: 'SimSum';
+}
+.cart_list img {
+    float: left;
+    display: block;
+    width: 75px;
+    height: 75px;
+    border: 1px solid #e8e8e8;
+    margin-left: 28px;
+}
+.cart_list li span {
+    float: left;
+    font-size: 12px;
+}
+.cart_list li .number {
+    float: left;
+}
+.cart_list li>span:nth-of-type(1) {
+    margin-left: 30px;
+    width: 344px;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cart_list li>span:nth-of-type(2) {
+    margin-left: 98px;
+}
+.cart_list li span:nth-of-type(3) {
+    margin-left: 104px;
+    font-family: 'Microsoft YaHei';
+}
+.cart_list li span:nth-of-type(4) {
+    margin-left: 146px;
+    font-family: 'Microsoft YaHei';
+    color: #e78167;
+}
+
+.cart_list li span a {
+    display: block;
+    color: #333;
+    margin-bottom: 18px;
+}
+.cart_list .number {
+    margin-left: 110px;
+}
+.number span {
+    width: 20px;
+    height: 22px;
+    border: 1px solid #e8e8e8;
+    line-height: 22px;
+    text-align: center;
+    color: #e8e8e8;
+}
+.cart_list .number input {
+    width: 48px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    color: #333;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    float: left;
+    margin: 0;
+    background: rgba(0,0,0,0);
+}
+.cart_list .number span:nth-of-type(2) {
+    margin: 0;
+    color: #333;
+}
+.cart_list .number span:nth-of-type(1) {
+    margin: 0;
+}
+/* cart_foot部分 */
+.cart_foot {
+    height: 50px;
+    width: 1200px;
+    background: #f7f7f7;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    line-height: 50px;
+}
+.cart_foot input {
+    float: left;
+    margin: 16px 10px 0 14px;
+    width: 18px;
+    height: 18px;
+}
+.cart_foot .bat_del {
+    float: left;
+    color: #666;
+    margin-left: 36px;
+}
+.cart_foot .check {
+    float: left;
+}
+.cart_foot span:nth-of-type(2) {
+    float: left;
+    margin-left: 558px;
+}
+.cart_foot span:nth-of-type(2) b {
+    margin: 0 12px;
+    color: #e78167;
+    font-weight: 400;
+}
+.cart_foot span:nth-of-type(3) {
+    float: left;
+    margin-left: 56px;
+}
+.cart_foot span:nth-of-type(3) b {
+    color: #e78167;
+    font-weight: 400;
+}
+.close_btn {
+    float: right;
+    width: 110px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #b39f78;
+    color: #fff;
+    font-size: 16px;
+}

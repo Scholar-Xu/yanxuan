@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>http获取远程数据</title>
+    <!--引入AngularJS的核心模块-->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <!--
+        展示isDelete的真实含义
+        1. ng-if="表达式"  表达式的返回值需要是boolean
+        2. filter 过滤器，展示真实的含义; 定制数据的展示
+            定义filter；
+            启用filter；
+        3. 使用数组
+    -->
+</head>
+<body ng-app="demo" ng-controller="demoController">
+<table>
+    <tr>
+        <th>编号</th>
+        <th>中文名称</th>
+        <th>英文名称</th>
+        <th>isDelete</th>
+    </tr>
+    <tr ng-repeat="brand in brandList">
+        <td>{{brand.id}}</td>
+        <td>{{brand.name}}</td>
+        <td>{{brand.englishName}}</td>
+        <!--<td><span ng-if="brand.isDelete == 1">删除</span>
+            <span ng-if="brand.isDelete == 0">正常</span></td>-->
+        <!--<td>{{brand.isDelete | delText }}</td>-->
+        <td>{{delArray[brand.isDelete]}}</td>
+    </tr>
+</table>
+</body>
+<script type="text/javascript">
+    var app = angular.module("demo",[]);
+    app.controller("demoController",function ($scope, $http) {
+        $scope.delArray = ["正常[]","删除[]"];
+        // 简写的方式
+        $http.get("../brand/queryAll").then(
+            function (value) {
+                console.log("成功");
+                console.log(value);
+                $scope.brandList = value.data;
+            },
+            function (reason) {
+                console.log("失败");
+            }
+        );
+
+    });
+
+    // 定义Filter
+    app.filter("delText", function () {
+        // value 真实值 0 /1
+        return function (value) {
+            if(value == 1){
+                return "删除-f";
+            }else{
+                return "正常-f"
+            }
+        }
+    })
+</script>
+</html>

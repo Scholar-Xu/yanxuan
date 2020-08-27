@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:secutiry="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!--不需要权限的资源-->
+    <secutiry:http pattern="/css/**" security="none" />
+    <secutiry:http pattern="/images/**" security="none" />
+    <secutiry:http pattern="/js/**" security="none" />
+
+    <!--访问权限-->
+    <!--
+        引用第三方的登录认证入口
+    -->
+    <secutiry:http use-expressions="false" entry-point-ref="casAuthenticationEntryPoint">
+        <secutiry:intercept-url pattern="/*" access="ROLE_USER" />
+
+        <secutiry:csrf disabled="true"/>
+        <!--添加cas认证的filter-->
+        <secutiry:custom-filter ref="casAuthenticationFilter" position="CAS_FILTER"/>
+        <!--退出的filter-->
+        <secutiry:custom-filter ref="singleSignOutFilter" before="CAS_FILTER"/>
+        <secutiry:custom-filter ref="logoutFilter" before="LOGOUT_FILTER"/>
+    </secutiry:http>
+
+    <!--CAS 登录认证的信息-->
+    <bean id="casAuthenticationEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
+        <!--登录认证的地址-->
+        <property name="loginUrl" value="https://localhost:8443/cas/login"/>
+        <property name="serviceProperties" ref="serviceProperties"/>
+    </bean>
+    <!--本地关联cas server信息-->
+    <bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
+        <property name="service" value="http://127.0.0.1:9905/login/cas"/>
+    </bean>
+
+    <!--cas 认证的filter-->
+    <bean id="casAuthenticationFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager"/>
+    </bean>
+
+
+    <!--授权认证-->
+    <secutiry:authentication-manager alias="authenticationManager">
+        <secutiry:authentication-provider ref="casAuthenticationProvider" />
+    </secutiry:authentication-manager>
+
+    <!--配置认证信息的供应商-->
+    <bean id="casAuthenticationProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
+        <property name="authenticationUserDetailsService" ref="userDetailsByNameServiceWrapper" />
+        <property name="serviceProperties" ref="serviceProperties"/>
+        <property name="ticketValidator" >
+            <bean class="org.jasig.cas.client.validation.Cas30ServiceTicketValidator" >
+                <constructor-arg name="casServerUrlPrefix" value="https://localhost:8443/cas"/>
+            </bean>
+        </property>
+        <property name="key" value="security_cas_key" />
+    </bean>
+
+    <!--UserDetials的信息提供-->
+    <bean id="userDetailsByNameServiceWrapper" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
+        <property name="userDetailsService">
+            <bean class="com.itjiguang.yanxuan.account.cas.CustomUserDetailsService" />
+        </property>
+    </bean>
+
+    <!--singleSignOutFilter 在中央认证服务器进行退出-->
+    <bean id="singleSignOutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter" />
+    <!--本地退出-->
+    <bean id="logoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+        <!--成功请求提u出的地址-->
+        <constructor-arg value="https://localhost:8443/cas/logout?service=http://localhost:9903/index.html"/>
+        <!--成功的处理器-->
+        <constructor-arg>
+            <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+        </constructor-arg>
+        <property name="filterProcessesUrl" value="/logout/cas"/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itjiguang.yanxuan.mapper.OrderGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.itjiguang.yanxuan.model.OrderGoods">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="sku_id" jdbcType="BIGINT" property="skuId" />
+    <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="total_fee" jdbcType="DECIMAL" property="totalFee" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="goods_label" jdbcType="VARCHAR" property="goodsLabel" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="seller_id" jdbcType="BIGINT" property="sellerId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, order_id, goods_id, sku_id, goods_price, count, total_fee, pic_url, goods_label, 
+    goods_name, seller_id
+  </sql>
+  <select id="selectByExample" parameterType="com.itjiguang.yanxuan.model.OrderGoodsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_goods
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from order_goods
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itjiguang.yanxuan.model.OrderGoodsExample">
+    delete from order_goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itjiguang.yanxuan.model.OrderGoods">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into order_goods (id, order_id, goods_id, 
+      sku_id, goods_price, count, 
+      total_fee, pic_url, goods_label, 
+      goods_name, seller_id)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, 
+      #{skuId,jdbcType=BIGINT}, #{goodsPrice,jdbcType=DECIMAL}, #{count,jdbcType=INTEGER}, 
+      #{totalFee,jdbcType=DECIMAL}, #{picUrl,jdbcType=VARCHAR}, #{goodsLabel,jdbcType=VARCHAR}, 
+      #{goodsName,jdbcType=VARCHAR}, #{sellerId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itjiguang.yanxuan.model.OrderGoods">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into order_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      id,
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="goodsPrice != null">
+        goods_price,
+      </if>
+      <if test="count != null">
+        count,
+      </if>
+      <if test="totalFee != null">
+        total_fee,
+      </if>
+      <if test="picUrl != null">
+        pic_url,
+      </if>
+      <if test="goodsLabel != null">
+        goods_label,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="sellerId != null">
+        seller_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=BIGINT},
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="totalFee != null">
+        #{totalFee,jdbcType=DECIMAL},
+      </if>
+      <if test="picUrl != null">
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsLabel != null">
+        #{goodsLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itjiguang.yanxuan.model.OrderGoodsExample" resultType="java.lang.Long">
+    select count(*) from order_goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update order_goods
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.goodsId != null">
+        goods_id = #{record.goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="record.skuId != null">
+        sku_id = #{record.skuId,jdbcType=BIGINT},
+      </if>
+      <if test="record.goodsPrice != null">
+        goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.count != null">
+        count = #{record.count,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalFee != null">
+        total_fee = #{record.totalFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.picUrl != null">
+        pic_url = #{record.picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsLabel != null">
+        goods_label = #{record.goodsLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsName != null">
+        goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerId != null">
+        seller_id = #{record.sellerId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update order_goods
+    set id = #{record.id,jdbcType=BIGINT},
+      order_id = #{record.orderId,jdbcType=BIGINT},
+      goods_id = #{record.goodsId,jdbcType=BIGINT},
+      sku_id = #{record.skuId,jdbcType=BIGINT},
+      goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
+      count = #{record.count,jdbcType=INTEGER},
+      total_fee = #{record.totalFee,jdbcType=DECIMAL},
+      pic_url = #{record.picUrl,jdbcType=VARCHAR},
+      goods_label = #{record.goodsLabel,jdbcType=VARCHAR},
+      goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      seller_id = #{record.sellerId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itjiguang.yanxuan.model.OrderGoods">
+    update order_goods
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsPrice != null">
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="totalFee != null">
+        total_fee = #{totalFee,jdbcType=DECIMAL},
+      </if>
+      <if test="picUrl != null">
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsLabel != null">
+        goods_label = #{goodsLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null">
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itjiguang.yanxuan.model.OrderGoods">
+    update order_goods
+    set order_id = #{orderId,jdbcType=BIGINT},
+      goods_id = #{goodsId,jdbcType=BIGINT},
+      sku_id = #{skuId,jdbcType=BIGINT},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      count = #{count,jdbcType=INTEGER},
+      total_fee = #{totalFee,jdbcType=DECIMAL},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      goods_label = #{goodsLabel,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>商品管理</title>
+    <!--引入上传图片的css文件-->
+    <link rel="stylesheet" type="text/css" href="../../plugins/upload/css/t_upload.css">
+
+</head>
+<body>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#/">首页</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a>新增商品</a>
+    </li>
+</ol>
+<div class="container">
+    <!-- Smart Wizard HTML -->
+    <div id="smartwizard">
+        <ul>
+            <li><a href="#category">商品类目<br/>
+                <small>依次选择类目</small>
+            </a></li>
+            <li><a href="#base">商品基本信息<br/>
+                <small>填写商品基本信息</small>
+            </a></li>
+            <li><a href="#spec">商品规格信息<br/>
+                <small>勾选商品属性，并填写库存信息</small>
+            </a></li>
+            <li><a href="#detail">商品介绍信息<br/>
+                <small>填写商品详情</small>
+            </a></li>
+        </ul>
+
+        <div>
+            <div id="category" class="row">
+                <form>
+                    <div class="form-group row">
+                        <label for="category1Id" class="col-sm-3 col-form-label">一级类目</label>
+                        <div class="col-sm-8">
+                            <select class="form-control invalid" required id="category1Id" ng-options="item.id as item.name for item in category1List" ng-model="entity.category1Id">
+                                <option value="">请选择一级类目</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="category2Id" class="col-sm-3 col-form-label">二级类目</label>
+                        <div class="col-sm-8">
+                            <select class="form-control invalid" required id="category2Id" ng-options="item.id as item.name for item in category2List" ng-model="entity.category2Id">
+                                <option value="">请先选择一级类目</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="category3Id" class="col-sm-3 col-form-label">三级类目</label>
+                        <div class="col-sm-8">
+                            <select class="form-control invalid" required id="category3Id"  ng-options="item.id as item.name for item in category3List" ng-model="entity.category3Id">
+                                <option value="">请先选择二级类目</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="base" class="row">
+                <form>
+                    <div class="form-group row">
+                        <label for="goodsName" class="col-sm-4 col-form-label">商品名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="goodsName" placeholder="请输入商品名称" ng-model="entity.name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="goodsLabel" class="col-sm-4 col-form-label">商品标题</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="goodsLabel" placeholder="请输入商品标题" ng-model="entity.label">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="sellPoint" class="col-sm-4 col-form-label">商品卖点</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="sellPoint" placeholder="请输入商品卖点" ng-model="entity.sellPoint">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="goodsBrand" class="col-sm-4 col-form-label">商品品牌</label>
+                        <div class="col-sm-8">
+                            <select class="form-control invalid" required id="goodsBrand"  ng-options="item.id as item.name for item in brandList" ng-model="entity.brandId">
+                                <option value="">请选择商品的品牌名称</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="goodsPrice" class="col-sm-4 col-form-label">商品价格</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="goodsPrice" placeholder="请输入商品价格" ng-model="entity.price">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="package" class="col-sm-4 col-form-label">包装列表</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="package" placeholder="请输入包装列表" ng-model="entity.packageList">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="sellService" class="col-sm-4 col-form-label">售后服务</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="sellService" placeholder="请输入售后服务信息" ng-model="entity.sellService">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="sellService" class="col-sm-4 col-form-label">商品图片</label>
+                        <div class="col-sm-8">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#goodsPicModal" ng-click="uploadSpuPic()">上传图片
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="spec" class="row">
+                <!-- 展示类目关联的规格 -->
+                <div class="row">
+                    <table class="table">
+                        <tr ng-repeat="item in specList">
+                            <th class="text-center">{{item.name}}</th>
+                            <td>
+                                <span ng-repeat="option in item.optionList">
+                                    <input type="checkbox" ng-click="getSpecCheckedList($event,item.name, option.name)" ng-checked="checkSpecOption(item.name, option.name)"/>{{option.name}}
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <hr class="my-4">
+                </div>
+                <div class="row">
+                    <!-- 商品库存信息 -->
+                    <table class="table text-center">
+                        <thead>
+                        <tr>
+                            <th ng-repeat="item in entity.specCheckedList track by $index">{{item.specName}}</th>
+                            <th>价格</th>
+                            <th>库存量</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="sku in entity.skuList">
+                            <td ng-repeat="item in entity.specCheckedList track by $index">{{sku.specs[item.specName]}}</td>
+                            <td>
+                                <input type="text" name="price" class="form-control" ng-model="sku.price"/>
+                            </td>
+                            <td>
+                                <input type="text" name="count" class="form-control" ng-model="sku.stockCount"/>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#skuPicModal" ng-click="uploadSkuPic($index)">上传图片</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="detail" class="row">
+                <div id="editor" class="tab-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 商品上传图片 -->
+<div class="modal fade" id="goodsPicModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="goodsPicLabel">SKU图片</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="destoryUpload('goodsPic')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="goodsPic"></div>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="destoryUpload('goodsPic')">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- sku上传图片 -->
+<div class="modal fade" id="skuPicModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="newModalLabel">SKU图片</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="destoryUpload('skuPic')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="skuPic"></div>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="destoryUpload('skuPic')">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--引入文件上传的js文件-->
+<script type="text/javascript" src="../../plugins/upload/ajaxfileupload.js"></script>
+<script type="text/javascript" src="../../plugins/upload/t_upload.js"></script>
+<script type="text/javascript" src="../../js/custom/wizard.js"></script>
+<script type="text/javascript" src="../../js/custom/editor.js"></script>
+</body>
+</html>

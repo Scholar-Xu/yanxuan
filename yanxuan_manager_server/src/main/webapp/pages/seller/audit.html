@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商家审核</title>
+</head>
+<body>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#/">首页</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#/seller/audit">商家审核</a>
+    </li>
+</ol>
+
+<div class="card mb-3">
+    <!-- 表格上方 -->
+    <div class="card-header">
+        <div class="row float-right">
+            <form class="d-md-inline-block form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="商铺的名称" aria-label="Search" ng-model="name"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" ng-click="pageQuery()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>商家ID</th>
+                    <th>公司名称</th>
+                    <th>店铺名称</th>
+                    <th>联系人姓名</th>
+                    <th>公司电话</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="seller in sellerList">
+                    <td>{{seller.id}}</td>
+                    <td>{{seller.companyName}}</td>
+                    <td>{{seller.name}}</td>
+                    <td>{{seller.linkmanName}}</td>
+                    <td>{{seller.companyTel}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal" ng-click="initEntity(seller)">详情
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination></pagination>
+    </div>
+</div>
+
+
+<!-- 编辑数据的窗口 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="newModalLabel">店铺详情</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- 商铺信息 -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="nav-item active">
+                        <a class="nav-link" data-target="#base" id="base-tab" role="tab" data-toggle="tab"
+                           aria-controls="base" aria-selected="false">基本信息</a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link" data-target="#linkman" id="linkman-tab" role="tab" data-toggle="tab"
+                           aria-controls="linkman" aria-selected="false">联系人信息</a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link" data-target="#legalPerson" id="legalPerson-tab" role="tab" data-toggle="tab"
+                           aria-controls="legalPerson" aria-selected="false">法人信息</a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link" data-target="#bank" id="bank-tab" role="tab" data-toggle="tab"
+                           aria-controls="bank" aria-selected="false">银行账户信息</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <!-- 基本信息 -->
+                    <div role="tabpanel" class="tab-pane fade show active" id="base" aria-labelledby="base-tab">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>公司名称</th>
+                                <td>{{entity.companyName}}</td>
+                            </tr>
+                            <tr>
+                                <th>营业执照号</th>
+                                <td>{{entity.companyLicense}}</td>
+                            </tr>
+                            <tr>
+                                <th>组织结构代码</th>
+                                <td>{{entity.companyOrgcode}}</td>
+                            </tr>
+                            <tr>
+                                <th>公司地址</th>
+                                <td>{{entity.companyAddress}}</td>
+                            </tr>
+                            <tr>
+                                <th>公司电话</th>
+                                <td>{{entity.companyTel}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- 联系人信息 -->
+                    <div role="tabpanel" class="tab-pane fade" id="linkman" aria-labelledby="linkman-tab">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>联系人姓名</th>
+                                <td>{{entity.linkmanName}}</td>
+                            </tr>
+                            <tr>
+                                <th>联系人手机号</th>
+                                <td>{{entity.linkmanPhone}}</td>
+                            </tr>
+                            <tr>
+                                <th>联系人邮箱</th>
+                                <td>{{entity.linkmanEmail}}</td>
+                            </tr>
+                            <tr>
+                                <th>联系人QQ</th>
+                                <td>{{entity.linkmanQq}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- 法人信息 -->
+                    <div role="tabpanel" class="tab-pane fade" id="legalPerson" aria-labelledby="legalPerson-tab">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>法人代表姓名</th>
+                                <td>{{entity.legalName}}</td>
+                            </tr>
+                            <tr>
+                                <th>法人代表证件类型</th>
+                                <td>居民身份证</td>
+                            </tr>
+                            <tr>
+                                <th>法人代表证件号码</th>
+                                <td>{{entity.legalCardId}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- 银行账户信息 -->
+                    <div role="tabpanel" class="tab-pane fade" id="bank" aria-labelledby="bank-tab">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>银行账户</th>
+                                <td>{{entity.bankAccount}}</td>
+                            </tr>
+                            <tr>
+                                <th>开户行名称</th>
+                                <td>{{entity.bankName}}</td>
+                            </tr>
+                            <tr>
+                                <th>开户支行名称</th>
+                                <td>{{entity.bankBranch}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="updateStatus(entity.id, 1)">审批通过</button>
+                <button type="button" class="btn btn-primary" ng-click="updateStatus(entity.id, 2)">审批退回</button>
+                <button type="button" class="btn btn-primary" ng-click="updateStatus(entity.id, 3)">关闭商铺</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

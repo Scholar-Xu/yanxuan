@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-5">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商家信息</title>
+  </head>
+<body >
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+      <a href="#/">首页</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a>商家信息</a>
+    </li>
+  </ol>
+  <div class="container-fluid">
+    <ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="nav-item active">
+	      <a class="nav-link" data-target="#base" id="base-tab" role="tab" data-toggle="tab" aria-controls="base" aria-selected="false">基本信息</a>
+	    </li>
+	    <li role="presentation" class="nav-item">
+	      <a class="nav-link" data-target="#linkman" id="linkman-tab" role="tab" data-toggle="tab" aria-controls="linkman" aria-selected="false">联系人信息</a>
+	    </li>
+	    <li role="presentation" class="nav-item">
+	      <a class="nav-link" data-target="#legalPerson" id="legalPerson-tab" role="tab" data-toggle="tab" aria-controls="legalPerson" aria-selected="false">法人信息</a>
+	    </li>
+	    <li role="presentation" class="nav-item">
+	      <a class="nav-link" data-target="#bank" id="bank-tab" role="tab" data-toggle="tab" aria-controls="bank" aria-selected="false">银行账户信息</a>
+	    </li>
+	  </ul>
+	  <div class="tab-content align-left mt-4">
+	    <!-- 基本信息 -->
+	    <div role="tabpanel" class="tab-pane fade show active" id="base" aria-labelledby="base-tab">
+	    	<form>
+              <div class="form-group row">
+                <label for="companyName" class="col-sm-1 col-form-label">公司名称</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="companyName" placeholder="公司名称" value="华为">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="companyLicense" class="col-sm-1 col-form-label">营业执照号</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="companyLicense" placeholder="营业执照号" value="561653153221">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="companyOrgcode" class="col-sm-1 col-form-label">组织结构代码</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="companyOrgcode" placeholder="组织结构代码" value="635326">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="companyAddress" class="col-sm-1 col-form-label">公司地址</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="companyAddress" placeholder="公司地址" value="华为总部">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="companyTel" class="col-sm-1 col-form-label">公司电话</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="companyTel" placeholder="公司电话" value="010-5326351">
+                </div>
+              </div>
+            </form>
+	    </div>
+	    <!-- 联系人信息 -->
+	    <div role="tabpanel" class="tab-pane fade" id="linkman" aria-labelledby="linkman-tab">
+	    	<form>
+              <div class="form-group row">
+                <label for="linkmanName" class="col-sm-1 col-form-label">联系人姓名</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="linkmanName" placeholder="联系人姓名" value="华为M">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="linkmanPhone" class="col-sm-1 col-form-label">联系人手机号</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="linkmanPhone" placeholder="联系人手机号" value="13112315675">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="linkmanEmail" class="col-sm-1 col-form-label">联系人邮箱</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="linkmanEmail" placeholder="联系人邮箱" value="635326@qq.com">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="linkmanQq" class="col-sm-1 col-form-label">联系人QQ</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="linkmanQq" placeholder="联系人QQ" value="635326">
+                </div>
+              </div>
+          	</form>
+	    </div>
+	    <!-- 法人信息 -->
+	    <div role="tabpanel" class="tab-pane fade" id="legalPerson" aria-labelledby="legalPerson-tab">
+	    	<form>
+              <div class="form-group row">
+                <label for="legalName" class="col-sm-1 col-form-label">法人代表姓名</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="legalName" placeholder="法人代表姓名" value="华为M">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="legalCardType" class="col-sm-1 col-form-label">法人代表证件类型</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="legalCardType" placeholder="法人代表证件类型" value="居民身份证">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="legalCardId" class="col-sm-1 col-form-label">法人代表证件号码</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="legalCardId" placeholder="法人代表证件号码" value="123569111112122563">
+                </div>
+              </div>
+          	</form>
+	    </div>
+	    <!-- 银行账户信息 -->
+	    <div role="tabpanel" class="tab-pane fade" id="bank" aria-labelledby="bank-tab">
+	    	<form>
+              <div class="form-group row">
+                <label for="bankAccount" class="col-sm-1 col-form-label">银行账户</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="bankAccount" placeholder="银行账户" value="65563256211523">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="bankName" class="col-sm-1 col-form-label">开户行名称</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="bankName" placeholder="开户行名称" value="中国建设银行">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="bankBranch" class="col-sm-1 col-form-label">开户支行名称</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="bankBranch" placeholder="开户支行名称" value="北京新华支行">
+                </div>
+              </div>
+          	</form>
+	    </div>
+	  </div>
+  </div>
+</body>
+</html>

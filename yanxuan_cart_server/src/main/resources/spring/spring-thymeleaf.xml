@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Spring模板解析器-->
+    <bean id="resolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+        <property name="characterEncoding" value="utf-8"/>
+        <property name="cacheable" value="false" />
+    </bean>
+
+    <!--模板引擎-->
+    <bean id="springTemplateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
+        <property name="templateResolver" ref="resolver" />
+    </bean>
+
+    <!--Thymeleaf视图解析器-->
+    <bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="springTemplateEngine" />
+        <property name="characterEncoding"  value="UTF-8" />
+    </bean>
+
+</beans>

@@ -1,0 +1,63 @@
+.regist_bg {
+	width:100%; 
+	min-width:1200px; 
+	/*height:100%; */
+	min-height: 518px;
+	overflow:hidden; 
+	background-color: #dcdadf;
+}
+
+.log_img {
+	width: 800px;
+    margin: 0 auto;
+	height:100%; 
+	overflow:hidden; 
+	margin-top:40px;
+    padding-top: 7px;
+    padding-left: 16px;
+    margin-right: 210px;
+    display: inline-block;
+    float: left;
+}
+
+.regist_form {
+    position: absolute;
+    display: inline-block;
+    float: left;
+    border-top: 20px;
+    top:initial;
+    margin-left: 0px;
+    margin-top: 20px;
+    left:inherit;
+}
+
+.regist_form input.checkCode {
+    display: inline-block;
+    width: 146px;
+    margin-left: 44px;
+}
+
+.login_bg {
+    width: 100%;
+    min-width: 1200px;
+    min-height: 350px;
+    overflow:hidden; 
+    background-color: #dcdadf;
+}
+
+.login {
+    position: relative;
+    top:1px;
+}
+
+.login_account {
+    display: none;
+}
+
+.login_scanCode {
+    display: none;
+}
+
+.login_img {
+    text-align:center
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>http获取远程数据</title>
+    <!--引入AngularJS的核心模块-->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+</head>
+<body ng-app="demo" ng-controller="demoController">
+<table>
+    <tr>
+        <th>编号</th>
+        <th>中文名称</th>
+        <th>英文名称</th>
+    </tr>
+    <tr ng-repeat="brand in brandList">
+        <td>{{brand.id}}</td>
+        <td>{{brand.name}}</td>
+        <td>{{brand.englishName}}</td>
+    </tr>
+</table>
+</body>
+<script type="text/javascript">
+    angular.module("demo",[]).controller("demoController",function ($scope, $http) {
+        // 发送请求，获取所有的商品品牌信息
+        /*$http({
+            method: "POST",
+            url: "../brand/queryAll"
+        }).then(
+            // 成功的回调函数
+            function (value) {
+                console.log("请求成功");
+                console.log(value);
+            },
+            // 请求失败的回调函数，失败的原因
+            function (reason) {
+                console.log(reason);
+            }
+        );*/
+
+        // 简写的方式
+        $http.get("../brand/queryAll").then(
+            function (value) {
+                console.log("成功");
+                console.log(value);
+                $scope.brandList = value.data;
+            },
+            function (reason) {
+                console.log("失败");
+            }
+        );
+        // 第二个参数是设置请求体中的参数
+       /* $http.post("../brand/queryAll").then(
+            function (value) {
+                console.log("成功");
+            },
+            function (reason) {
+                console.log("失败");
+            }
+        );*/
+    })
+</script>
+</html>

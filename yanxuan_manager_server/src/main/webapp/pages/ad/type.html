@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>广告类型管理</title>
+
+</head>
+<body>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#/">首页</a>
+    </li>
+    <li class="breadcrumb-item active">广告类型管理</li>
+</ol>
+
+<div class="card mb-3">
+    <!-- 表格上方 -->
+    <div class="card-header">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal">新增</button>
+        <div class="row float-right">
+            <form class="d-md-inline-block form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="类型名称" aria-label="Search" ng-model="name"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" ng-click="pageQuery()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="card-body">
+        <div class="table-responsive text-center">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>类型名称</th>
+                    <th>媒体类型</th>
+                    <th>类型说明</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in dataList">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{mediaTypeArr[item.mediaType]}}</td>
+                    <td>{{item.typeDesc}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal" ng-click="initData(item)">修改
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="delete(item.id)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination></pagination>
+    </div>
+</div>
+<!-- 编辑数据的窗口 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="newModalLabel">广告类型详情</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="typeName" class="col-sm-4 col-form-label">广告类型名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="typeName" placeholder="请输入广告类型名称" ng-model="entity.name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mediaType" class="col-sm-4 col-form-label">媒体类型</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="mediaType" ng-model="entity.mediaType">
+                                <option value="1">图片</option>
+                                <option value="2">文字</option>
+                                <option value="3">代码</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="typeDesc" class="col-sm-4 col-form-label">广告类型介绍</label>
+                        <div class="col-sm-8">
+                            <textarea type="text" class="form-control" id="typeDesc" rows="3" ng-model="entity.typeDesc"
+                                      placeholder="请输入广告类型介绍"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

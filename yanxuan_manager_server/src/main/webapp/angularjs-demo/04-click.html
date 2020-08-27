@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>click</title>
+    <!--引入AngularJS的核心模块-->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <!--
+        定义一个按钮，点击按钮时，进行+1运算
+        ng-click 指定点击事件
+    -->
+</head>
+<body ng-app="demo" ng-controller="demoController">
+    <button type="button" ng-click="clickMe()">点我</button>
+<hr/>
+结果为：{{count}}
+</body>
+<script type="text/javascript">
+    var app = angular.module("demo",[]);
+    app.controller("demoController", function ($scope) {
+        $scope.count = 1;
+
+        // 方法进行+1运算
+        $scope.clickMe = function () {
+            // 加1运算
+            $scope.count ++;
+        }
+    })
+</script>
+</html>

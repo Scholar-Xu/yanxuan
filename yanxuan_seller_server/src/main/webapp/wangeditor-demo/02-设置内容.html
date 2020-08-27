@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入Wangeditor相关的js文件-->
+    <script type="text/javascript" src="../plugins/wangEditor/wangEditor.min.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <h2>这是使用html的方式设置的内容！！</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    // 创建Editor
+    var editor = new E("#demo");
+    // 如果需要自定义设置一些属性，必须是在进行create()之前。
+    // 页面展示效果的初始化
+    editor.create();
+    // 使用js的方式设置编辑器中的内容
+    // editor.txt.html("<h3>这是使用js的方式设置内容。。</h3>");
+
+    // 使用js进行追加内容
+    editor.txt.append("<h4>这是追加的内容.....</h4>");
+
+    // 清空编辑器中的内容
+    // editor.txt.clear();
+
+    // 获取设置的内容
+    var content = editor.txt.html();// 获取到的内容是包含html标签的
+    // var content = editor.txt.text(); // 获取到的内容是不包含html标签的。
+    console.log(content);
+</script>
+</html>

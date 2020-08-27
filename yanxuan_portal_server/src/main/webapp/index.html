@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>极光严选</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/index.css">
+
+</head>
+<body ng-app="yanxuan">
+	<!-- 顶部导航条区域开始 -->
+	<div class="top_bar">
+		<div class="inner_c">
+			<!-- 发货城市开始 -->
+			<div class="s_city">
+				<span>送货至:</span>
+				<div class="cur_city">
+					<span>四川</span>
+					<div class="s_city_bg">
+						<span class="arrow_top"></span>
+						<h4>请选择所在的收货地区</h4>
+						<ul>
+							<li>
+								<span>A</span>
+								<a href="javascript:void(0);">安徽</a>
+								<a href="javascript:void(0);">澳门</a>
+							</li>
+							<li>
+								<span>B</span>
+								<a href="javascript:void(0);">北京</a>
+							</li>
+							<li>
+								<span>C</span>
+								<a href="javascript:void(0);">重庆</a>
+							</li>
+							<li>
+								<span>F</span>
+								<a href="javascript:void(0);">福建</a>
+							</li>
+							<li>
+								<span>G</span>
+								<a href="javascript:void(0);">广东</a>
+								<a href="javascript:void(0);">广西</a>
+								<a href="javascript:void(0);">贵州</a>
+								<a href="javascript:void(0);">甘肃</a>
+							</li>
+							<li>
+								<span>H</span>
+								<a href="javascript:void(0);">河北</a>
+								<a href="javascript:void(0);">河南</a>
+								<a href="javascript:void(0);">黑龙江</a>
+								<a href="javascript:void(0);">海南</a>
+								<a href="javascript:void(0);">湖北</a>
+								<a href="javascript:void(0);">湖南</a>
+							</li>
+							<li>
+								<span>J</span>
+								<a href="javascript:void(0);">江苏</a>
+								<a href="javascript:void(0);">吉林</a>
+								<a href="javascript:void(0);">江西</a>
+							</li>
+							<li>
+								<span>L</span>
+								<a href="javascript:void(0);">辽宁</a>
+							</li>
+							<li>
+								<span>N</span>
+								<a href="javascript:void(0);">内蒙古</a>
+								<a href="javascript:void(0);">宁夏</a>
+							</li>
+							<li>
+								<span>Q</span>
+								<a href="javascript:void(0);">青海</a>
+							</li>
+							<li>
+								<span>S</span>
+								<a href="javascript:void(0);">上海</a>
+								<a href="javascript:void(0);">山东</a>
+								<a href="javascript:void(0);">山西</a>
+								<a href="javascript:void(0);" class="cur">四川</a>
+								<a href="javascript:void(0);">陕西</a>
+							</li>
+							<li>
+								<span>T</span>
+								<a href="javascript:void(0);">台湾</a>
+								<a href="javascript:void(0);">天津</a>
+							</li>
+							<li>
+								<span>X</span>
+								<a href="javascript:void(0);">西藏</a>
+								<a href="javascript:void(0);">香港</a>
+								<a href="javascript:void(0);">新疆</a>
+							</li>
+							<li>
+								<span>Y</span>
+								<a href="javascript:void(0);">云南</a>
+							</li>
+							<li>
+								<span>Z</span>
+								<a href="javascript:void(0);">浙江</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 发货城市结束 -->
+			<div class="top_nav">
+				<div class="fl">
+					<a href="#" class="login">登录</a>
+					<a href="#" class="regist">注册</a>
+				</div>
+				<div class="fr">
+					<a href="#">我的订单</a>
+					<span>|</span>
+					<a href="#">收藏夹</a>
+					<span>|</span>
+					<a href="#">网站导航</a>
+					<span>|</span>
+					<a href="#">客户服务</a>
+					<span>|</span>
+					<a href="#" class="app">APP</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 顶部导航条区域结束 -->
+	<!-- header、logo、搜索区域 -->
+	<div class="header inner_c" ng-controller="searchController">
+		<!-- logo -->
+		<h1 class="logo"><a href="index.html"></a></h1>
+		<!-- 搜索框区域 -->
+		<div class="search">
+			<form class="top">
+				<input type="search" placeholder="请输入您感兴趣的商品、品牌" class="search_box" ng-model="keywords">
+				<input type="submit" value="搜索" class="btn" ng-click="search()">
+			</form>
+			<p class="exm">
+				<a href="#">咖啡</a>
+				<a href="#" class="iphone">iPhone6s</a>
+				<a href="#">新鲜美食</a>
+				<a href="#">蛋糕</a>
+				<a href="#">日用品</a>
+				<a href="#">连衣裙</a>
+			</p>
+		</div>
+		<!-- 购物车 -->
+		<div class="cart">
+			<span class="name">购物车</span>
+			<span class="number">3</span>
+		</div>
+	</div>
+	<!-- header、logo、搜索区域结束 -->
+	<!-- 导航部分 -->
+	<div class="nav inner_c">
+		<!-- 分类部分 -->
+		<div class="classify">
+			<h2>全部商品分类</h2>
+			<ul class="list">
+				<li><a href="#">进口食品、生鲜</a></li>
+				<li><a href="#">食品、饮料、酒</a></li>
+				<li><a href="#">母婴、玩具、童装</a></li>
+				<li><a href="#">家居、家庭清洁、纸品</a></li>
+				<li><a href="#">美妆、个人护理、洗护</a></li>
+				<li><a href="#">女装、内衣、中老年</a></li>
+				<li><a href="#">鞋靴、箱包、腕表配饰</a></li>
+				<li><a href="#">男装、运动</a></li>
+				<li><a href="#">手机、小家电、电脑</a></li>
+				<li><a href="#">礼品、充值</a></li>
+			</ul>
+		</div>
+		<!-- 分类部分结束 -->
+		<!-- 大分类导航 -->
+		<ul class="main_nav">
+			<li><a href="#">首页</a></li>
+			<li><a href="#">美食</a></li>
+			<li><a href="#">生鲜</a></li>
+			<li><a href="#">家居</a></li>
+			<li><a href="#">女装</a></li>
+			<li><a href="#">美妆</a></li>
+			<li><a href="#">数码</a></li>
+			<li class="well"><span>|</span><a href="#">严选好物</a></li>
+			<li class="global"><a href="#">全球选</a></li>
+		</ul>
+		<!-- 大分类导航结束 -->
+	</div>
+	<!-- 导航部分结束 -->
+	<!-- banner区域 -->
+	<div class="banner"  ng-controller="adInfoController" ng-init="pageQuery()">
+		<!-- 轮播图 -->
+		<div class="carousel">
+			<ul>
+				<li ng-repeat="item in dataList" ng-class="{current: $index===0}"><a href="{{item.url}}" ng-bind-html="item.content|to_trusted"></a></li>
+			</ul>
+			<ol>
+				<li ng-repeat="item in dataList" ng-class="{current: $index===0}"></li>
+			</ol>
+		</div>
+		<!-- 版心内部内容 -->
+		<div class="inner_c banner_c">
+			<!-- 更多分类 -->
+			<div class="more">
+				<dl>
+					<dt>
+						<a href="#"><img src="images/banner_more_1.png"></a>
+					</dt>
+					<dd>
+						<a href="#">
+							<h4>优质男装</h4>
+							<p>爆款5折起</p>
+						</a>						
+					</dd>
+				</dl>
+				<dl>
+					<dt class="t24">
+						<a href="#"><img src="images/banner_more_2.png"></a>
+					</dt>
+					<dd>
+						<a href="#">
+							<h4>营养健康</h4>
+							<p>赠送健康险</p>
+						</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt class="t30">
+						<a href="#"><img src="images/banner_more_3.png"></a>
+					</dt>
+					<dd>
+						<a href="#">
+							<h4>休闲零食</h4>
+							<p>口不能停</p>
+						</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<a href="#"><img src="images/banner_more_4.png"></a>
+					</dt>
+					<dd>
+						<a href="#">
+							<h4>电子潮音</h4>
+							<p>HI-FI动能</p>
+						</a>
+					</dd>
+				</dl>
+			</div>
+			<!-- 更多分类结束 -->
+			<!-- 信息 -->
+			<div class="info">
+				<!-- 顶部信息 -->
+				<div class="news">
+					<h3>
+						<span>最新严选</span>
+						<a href="#" class="news_more">更多 &gt;</a>
+					</h3>
+					<ul>
+						<li class="first"><a href="#">花莲纽扣上新在即</a></li>
+						<li><a href="#">亚朵沐浴三件套已上架</a></li>
+						<li><a href="#">潘多拉代工厂商已加盟</a></li>
+						<li><a href="#">惠氏三段奶粉已上架</a></li>
+						<li><a href="#">繁叶摆件已上架</a></li>
+						<li><a href="#">全球选澳洲频道已上线</a></li>
+					</ul>
+				</div>
+				<!-- 底部定制部分 -->
+				<div class="made">
+					<h3>
+						<span><b>极品</b>定制</span>
+						<a href="#" class="news_more">更多 &gt;</a>
+					</h3>
+					<div class="pro">
+						<img src="images/necklace.png">
+						<p>恶魔之眼定制</p>
+						<a href="#">我要</a>
+					</div>
+				</div>
+			</div>
+			<!-- 信息结束 -->
+		</div>
+		<!-- 版心内部内容结束 -->		
+	</div>
+	<!-- banner区域结束 -->
+	<!-- 极光出品部分 -->
+	<div class="produce inner_c">
+		<h2><b>极光出品</b><span>极光与厂家深度合作好物</span></h2>
+		<ul>
+			<li class="first">
+				<a href="#">
+					<h3>CITCO代工厂商</h3>
+					<p>669.9元起</p>
+				</a>
+				<a href="#"><img src="images/pro_1.png"></a>
+			</li>
+			<li>
+				<a href="#">
+					<h3>施华洛世奇代工厂商</h3>
+					<p>69.9元起</p>
+				</a>
+				<a href="#" class="t70"><img src="images/pro_2.png"></a>
+			</li>
+			<li>
+				<a href="#">
+					<h3>DAOMAN代工厂商</h3>
+					<p>369.9元起</p>
+				</a>
+				<a href="#" class="t17"><img src="images/pro_3.png"></a>
+			</li>
+			<li>				
+				<a href="#">
+					<h3>纪梵希代工厂商</h3>
+					<p>219.9元起</p>
+				</a>
+				<a href="#" class="r20"><img src="images/pro_4.png"></a>
+			</li>
+			<li>
+				<a href="#">
+					<h3>JIGUANG厂商</h3>
+					<p>169.9元起</p>
+				</a>
+				<a href="#" class="t60 r35"><img src="images/pro_5.png"></a>
+			</li>
+		</ul>
+	</div>
+	<!-- 极光出品部分结束 -->
+	<!-- 百万严选部分 -->
+	<div class="million inner_c">
+		<h2><b>百万严选</b><span>为你寻觅世间好物</span></h2>
+		<div class="list">
+			<ul>
+				<li>
+					<div class="pic"><a href="#"><img src="images/million_1.png"></a></div>
+					<h3><a href="#">WANGREENxCHENCLEAN</a></h3>
+					<p><a href="#">¥688</a></p>
+				</li>
+				<li>
+					<div class="pic"><a href="#"><img src="images/million_2.png"></a></div>
+					<h3><a href="#">Dior迪奥烈焰烈艳蓝金红管</a></h3>
+					<p><a href="#">¥288</a></p>
+				</li>
+				<li>
+					<div class="pic"><a href="#"><img src="images/million_3.png"></a></div>
+					<h3><a href="#">飞利浦剃须刀刀头整体</a></h3>
+					<p><a href="#">¥92</a></p>
+				</li>
+				<li>
+					<div class="pic"><a href="#"><img src="images/million_4.png"></a></div>
+					<h3><a href="#">EARMOR M31 MOD1 电子拾音降噪耳机</a></h3>
+					<p><a href="#">¥9012</a></p>
+				</li>
+				<li>
+					<div class="pic"><a href="#"><img src="images/million_1.png"></a></div>
+					<h3><a href="#">WANGREENxCHENCLEAN</a></h3>
+					<p><a href="#">¥688</a></p>
+				</li>
+				<li>
+					<div class="pic"><a href="#"><img src="images/million_2.png"></a></div>
+					<h3><a href="#">Dior迪奥烈焰烈艳蓝金红管</a></h3>
+					<p><a href="#">¥288</a></p>
+				</li>
+				<li>
+					<div class="pic"><a href="#"><img src="images/million_3.png"></a></div>
+					<h3><a href="#">飞利浦剃须刀刀头整体</a></h3>
+					<p><a href="#">¥92</a></p>
+				</li>
+				<li>
+					<div class="pic"><a href="#"><img src="images/million_4.png"></a></div>
+					<h3><a href="#">EARMOR M31 MOD1 电子拾音降噪耳机</a></h3>
+					<p><a href="#">¥9012</a></p>
+				</li>
+			</ul>
+			<div class="btn">
+				<a href="javascript:void(0);" class="leftbtn">&lt;</a>
+				<a href="javascript:void(0);" class="rightbtn">&gt;</a>
+			</div>
+		</div>
+	</div>
+	<!-- 百万严选部分结束 -->
+	<!-- 限时福利部分 -->
+	<div class="welfare">
+		<div class="inner_c">
+			<h2><b>限时福利</b><a href="#">查看全部福利 &gt;</a></h2>
+			<ul class="con">
+				<li class="count">
+					<h3>11点场</h3>
+					<p>距离结束还有</p>
+					<div class="time">
+						<span class="hour">08</span>
+						<b>:</b>
+						<span class="minite">00</span>
+						<b>:</b>
+						<span class="second">05</span>
+					</div>
+					<a href="#" class="count_more">查看更多</a>
+				</li>
+				<li class="now">
+					<h4>
+						<span>正在进行</span>
+						<a href="#">查看全部 &gt;</a>
+					</h4>
+					<div class="list">
+						<dl>
+							<dt>
+								<a href="#"><img src="images/welfare_01.png"></a>
+							</dt>
+							<dd>
+								<a href="#">PROS BY CH日系 衬衫</a>
+								<p>限时价 <b><i>¥</i>140</b></p>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="#"><img src="images/welfare_02.png"></a>
+							</dt>
+							<dd>
+								<a href="#">嫁妆箱新中式收藏箱</a>
+								<p>限时价 <b><i>¥</i>320</b></p>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="#"><img src="images/welfare_03.png"></a>
+							</dt>
+							<dd>
+								<a href="#">原创工装高帮靴子男</a>
+								<p>限时价 <b><i>¥</i>710</b></p>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="#"><img src="images/welfare_04.png"></a>
+							</dt>
+							<dd>
+								<a href="#">美可卓成人奶粉</a>
+								<p>限时价 <b><i>¥</i>280</b></p>
+							</dd>
+						</dl>
+					</div>
+				</li>
+				<li class="coming">
+					<h4>
+						<span>即将进行</span>
+						<a href="#">全部 &gt;</a>
+					</h4>
+					<div class="list">
+						<dl>
+							<dt>
+								<a href="#"><img src="images/welfare_05.png"></a>
+							</dt>
+							<dd>
+								<a href="#">Eaoron水光针素颜霜</a>
+								<p>限时价 <b><i>¥</i>99</b></p>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="#"><img src="images/welfare_06.png"></a>
+							</dt>
+							<dd>
+								<a href="#">老鲜生 鱿鱼仔带籽</a>
+								<p>限时价 <b><i>¥</i>39</b></p>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="#"><img src="images/welfare_07.png"></a>
+							</dt>
+							<dd>
+								<a href="#">Mueka包包女2019 新款</a>
+								<p>限时价 <b><i>¥</i>368</b></p>
+							</dd>
+						</dl>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 限时福利部分结束 -->
+	<!-- 食品部分 -->
+	<div class="food inner_c">
+		<!-- 进口生鲜部分 -->
+		<div class="fresh">
+			<h2><b>进口生鲜</b><a href="#">查看全部 &gt;</a></h2>
+			<a href="#" class="main_pic"><img src="images/fresh_main.png"></a>
+			<div class="list">
+				<dl>
+					<dt>
+						<a href="#"><img src="images/fresh_01.png"></a>
+					</dt>
+					<dd>
+						<a href="#">聚福鲜进口冰鲜三文鱼</a>
+						<p>¥68</p>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<a href="#"><img src="images/fresh_02.png"></a>
+					</dt>
+					<dd>
+						<a href="#">烧即食鲍鱼罐头</a>
+						<p>¥58</p>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<a href="#"><img src="images/fresh_03.png"></a>
+					</dt>
+					<dd>
+						<a href="#">进口三文鱼整只</a>
+						<p>¥858</p>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<a href="#"><img src="images/fresh_04.png"></a>
+					</dt>
+					<dd>
+						<a href="#">俄罗斯大闸蟹</a>
+						<p>¥1299</p>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 进口生鲜部分结束 -->
+		<!-- 食品酒水部分 -->
+		<div class="drink">
+			<h2><b>食品酒水</b><a href="#">查看全部 &gt;</a></h2>
+			<a href="#" class="main_pic"><img src="images/drink_main.png"></a>
+			<div class="list">
+				<dl>
+					<dt>
+						<a href="#"><img src="images/drink_01.png"></a>
+					</dt>
+					<dd>
+						<a href="#">乐天初饮初乐桃子味</a>
+						<p>¥13.8</p>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<a href="#"><img src="images/drink_02.png"></a>
+					</dt>
+					<dd>
+						<a href="#">烧即食鲍鱼罐头</a>
+						<p>¥58</p>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<a href="#"><img src="images/drink_03.png"></a>
+					</dt>
+					<dd>
+						<a href="#">米汁酒</a>
+						<p>¥29.8</p>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<a href="#"><img src="images/drink_04.png"></a>
+					</dt>
+					<dd>
+						<a href="#">俄罗斯大闸蟹</a>
+						<p>¥1299</p>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 食品酒水部分结束 -->
+	</div>
+	<!-- 食品部分结束 -->
+	<!-- 猜你想要部分 -->
+	<div class="want">
+		<div class="want_c">
+			<h2><b>猜你想要</b></h2>
+			<ul class="list">
+				<li>
+					<a href="#" class="title"><img src="images/want_01.png"></a>
+					<a class="description">
+						<h4>限量款军绿PUma</h4>
+						<p>编织材质和“袜子鞋”风潮横扫球鞋界的年代里，PUMA也紧跟潮流打造了一双全新的PUMA IGNITE 3 EVOKNIT鞋款，运用独家打造的新设计...</p>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="title"><img src="images/want_02.png"></a>
+					<a class="description">
+						<h4>澳大利亚梵鹿干红葡萄酒</h4>
+						<p>与旧世界的葡萄酒产国酒相比，澳洲葡萄酒的酿造方式是与众不同的。</p>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="title"><img src="images/want_03.png"></a>
+					<a class="description">
+						<h4>千丝绿豆饼整箱</h4>
+						<p>挑选新鲜绿豆，脱皮后加工而成。薄薄的外皮包裹着满满的绿豆馅</p>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="title"><img src="images/want_04.png"></a>
+					<a class="description">
+						<h4>GUCCI 2019新款手袋</h4>
+						<p>新季魅力，势不可挡。</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 猜你想要部分结束 -->
+	<!-- 底部承诺内容部分 -->
+	<div class="promise inner_c">
+		<ul>
+			<li>
+				<h4>正品保障</h4>
+				<p>正品行货 放心购买</p>
+			</li>
+			<li>
+				<h4>满38包邮</h4>
+				<p>满38包邮 免运费</p>
+			</li>
+			<li>
+				<h4>天天低价</h4>
+				<p>天天低价 畅选无忧</p>
+			</li>
+			<li>
+				<h4>准时送达</h4>
+				<p>收货时间由你做主</p>
+			</li>
+		</ul>
+	</div>
+	<!-- 底部承诺内容部分结束 -->
+	<!-- 底部导航部分 -->	
+	<div class="bottom_nav">
+		<div class="inner_c bottom_nav_c">
+			<dl>
+				<dt>新手上路</dt>
+				<dd>
+					<a href="#">售后流程</a>
+					<a href="#">购物流程</a>
+					<a href="#">订购方式</a>
+					<a href="#">隐私声明</a>
+					<a href="#">推荐分享说明</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt>配送与支付</dt>
+				<dd>
+					<a href="#">货到付款区域</a>
+					<a href="#">配送支付查询</a>
+					<a href="#">支付方式说明</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt>会员中心</dt>
+				<dd>
+					<a href="#">资金管理</a>
+					<a href="#">我的收藏</a>
+					<a href="#">我的订单</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt>服务保证</dt>
+				<dd>
+					<a href="#">退换货原则</a>
+					<a href="#">售后服务保证</a>
+					<a href="#">产品质量保证</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt>联系我们</dt>
+				<dd>
+					<a href="#">网站故障报告</a>
+					<a href="#">购物咨询</a>
+					<a href="#">投诉与建议</a>
+				</dd>
+			</dl>
+			<!-- 关于我们 -->
+			<div class="aboutus">
+				<a href="#" class="sina">新浪微博</a>
+				<a href="#" class="qq">腾讯微博</a>
+				<p>
+					<span>服务热线：</span>
+					<span>400-123-5564</span>
+				</p>
+			</div>
+			<div class="focus">
+				<img src="images/ewm.png" class="ewm">
+				<img src="images/saoyisao.png" class=>
+			</div>
+		</div>
+	</div>
+	<!-- 底部导航部分结束 -->
+	<!-- 底部其他信息部分 -->
+	<div class="footer">
+		<div class="inner_c">
+			<p>备案/许可证编号：京ICP备12008899号-1-www.jgxy.cc Copyright © 2018-2018 极光严选网 All Rights Reserved. 复制必究 , Technical Support:
+			Dgg Group</p>
+			<p>
+				<img src="images/footer_1.gif"><img src="images/footer_2.gif"><img src="images/footer_3.gif"><img src="images/footer_4.gif"><img src="images/footer_5.gif"><img src="images/footer_6.gif">
+			</p>
+		</div>
+	</div>
+	<!-- 底部其他信息部分结束 -->
+	<!-- 登录页开始 -->
+	<div class="mask log_on">
+		<div class="log_box">
+			<div class="log_tit">
+				<a href="javascript:;">账号登录</a>
+				<span>|</span>
+				<a href="javascript:;">手机登录</a>
+			</div>
+			<form action="">
+				<input type="text" placeholder="请输入用户名">
+				<input type="password" placeholder="请输入密码">
+				<div class="assist">
+					<span>
+						<input type="checkbox">保存登录信息
+					</span>
+					<a href="#" class="for_pass">忘记密码</a>
+				</div>
+				<input type="submit" value="登录" class="log_btn">
+			</form>
+			<span class="ple_reg">没有账号，<a href="javascript:;" class="reg_now">立即注册</a></span>
+			<a href="javascript:;" class="log_close">×</a>
+		</div>
+	</div>
+	<!-- 登录页结束 -->
+	<!-- 注册页面开始 -->
+	<div class="mask register" ng-controller="accountController">
+		<div class="reg_box">
+			<h4>注册</h4>
+			<form action="">
+				<input type="text" placeholder="请输入用户名" ng-model="entity.loginName">
+				<input type="password" placeholder="请输入密码" ng-model="entity.password">
+				<input type="password" placeholder="请输入密码" ng-model="entity.confirmPwd">
+				<input type="email" placeholder="请输入邮箱" ng-model="entity.email">
+				<input type="text" placeholder="请输入手机号码" ng-model="entity.phone">
+				<input type="text" class="checkCode" placeholder="请输入验证码" ng-model="entity.checkCode"><a href="javascript:;" ng-click="sendCheckCode()">获取验证码</a>
+				<div class="assist">
+					<input type="checkbox">我已阅读并接受
+					<a href="#" class="user_agr">《用户协议》</a>
+				</div>
+				<input type="submit" value="注册" class="reg_btn" ng-click="saveAccountInfo()">
+			</form>
+			<span class="ple_reg">已有账号，<a href="javascript:;" class="enroll">立即登录</a></span>
+			<a href="javascript:;" class="log_close">×</a>
+		</div>
+	</div>
+	<!-- 注册页面结束 -->
+</body>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/countdown.js"></script>
+
+	<script src="js/million.js"></script>
+	<script type="text/javascript" src="js/plugins/angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/custom/app.module.js" ></script>
+	<script type="text/javascript" src="js/custom/app.service.js" ></script>
+	<script type="text/javascript" src="js/custom/app.filter.js" ></script>
+	<script type="text/javascript" src="js/custom/adInfo.controller.js" ></script>
+	<script type="text/javascript" src="js/custom/adInfo.service.js" ></script>
+<script type="text/javascript" src="js/custom/account.controller.js"></script>
+<script type="text/javascript" src="js/custom/search.controller.js"></script>
+<script type="text/javascript" src="js/custom/sms.service.js"></script>
+<script type="text/javascript" src="js/custom/account.service.js"></script>
+<script type="text/javascript">
+    $.getScript("js/custom/adInfo.controller.js",function(){//回调函数，成功获取文件后执行的函数
+        loadjsAfterOnload();
+    });
+    function loadjsAfterOnload() {
+        var element = document.createElement("script");
+        element.src = "js/carousel.js";
+        document.body.appendChild(element);
+    }
+</script>
+</html>

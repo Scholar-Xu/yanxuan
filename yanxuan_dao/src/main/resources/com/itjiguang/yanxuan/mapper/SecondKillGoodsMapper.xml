@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itjiguang.yanxuan.mapper.SecondKillGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.itjiguang.yanxuan.model.SecondKillGoods">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="sku_id" jdbcType="BIGINT" property="skuId" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="small_pic" jdbcType="VARCHAR" property="smallPic" />
+    <result column="old_price" jdbcType="DECIMAL" property="oldPrice" />
+    <result column="new_price" jdbcType="DECIMAL" property="newPrice" />
+    <result column="seller_id" jdbcType="BIGINT" property="sellerId" />
+    <result column="total_count" jdbcType="INTEGER" property="totalCount" />
+    <result column="stock_count" jdbcType="INTEGER" property="stockCount" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="start_date" jdbcType="TIMESTAMP" property="startDate" />
+    <result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="check_date" jdbcType="TIMESTAMP" property="checkDate" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, goods_id, sku_id, label, small_pic, old_price, new_price, seller_id, total_count, 
+    stock_count, introduction, start_date, end_date, create_date, check_date, status
+  </sql>
+  <select id="selectByExample" parameterType="com.itjiguang.yanxuan.model.SecondKillGoodsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from second_kill_goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from second_kill_goods
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from second_kill_goods
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itjiguang.yanxuan.model.SecondKillGoodsExample">
+    delete from second_kill_goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itjiguang.yanxuan.model.SecondKillGoods">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into second_kill_goods (id, goods_id, sku_id, 
+      label, small_pic, old_price, 
+      new_price, seller_id, total_count, 
+      stock_count, introduction, start_date, 
+      end_date, create_date, check_date, 
+      status)
+    values (#{id,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT}, 
+      #{label,jdbcType=VARCHAR}, #{smallPic,jdbcType=VARCHAR}, #{oldPrice,jdbcType=DECIMAL}, 
+      #{newPrice,jdbcType=DECIMAL}, #{sellerId,jdbcType=BIGINT}, #{totalCount,jdbcType=INTEGER}, 
+      #{stockCount,jdbcType=INTEGER}, #{introduction,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, #{checkDate,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itjiguang.yanxuan.model.SecondKillGoods">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into second_kill_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      id,
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+      <if test="smallPic != null">
+        small_pic,
+      </if>
+      <if test="oldPrice != null">
+        old_price,
+      </if>
+      <if test="newPrice != null">
+        new_price,
+      </if>
+      <if test="sellerId != null">
+        seller_id,
+      </if>
+      <if test="totalCount != null">
+        total_count,
+      </if>
+      <if test="stockCount != null">
+        stock_count,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="startDate != null">
+        start_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="checkDate != null">
+        check_date,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=BIGINT},
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="smallPic != null">
+        #{smallPic,jdbcType=VARCHAR},
+      </if>
+      <if test="oldPrice != null">
+        #{oldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="newPrice != null">
+        #{newPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="totalCount != null">
+        #{totalCount,jdbcType=INTEGER},
+      </if>
+      <if test="stockCount != null">
+        #{stockCount,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkDate != null">
+        #{checkDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itjiguang.yanxuan.model.SecondKillGoodsExample" resultType="java.lang.Long">
+    select count(*) from second_kill_goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update second_kill_goods
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.goodsId != null">
+        goods_id = #{record.goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="record.skuId != null">
+        sku_id = #{record.skuId,jdbcType=BIGINT},
+      </if>
+      <if test="record.label != null">
+        label = #{record.label,jdbcType=VARCHAR},
+      </if>
+      <if test="record.smallPic != null">
+        small_pic = #{record.smallPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oldPrice != null">
+        old_price = #{record.oldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.newPrice != null">
+        new_price = #{record.newPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sellerId != null">
+        seller_id = #{record.sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.totalCount != null">
+        total_count = #{record.totalCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.stockCount != null">
+        stock_count = #{record.stockCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.introduction != null">
+        introduction = #{record.introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startDate != null">
+        start_date = #{record.startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endDate != null">
+        end_date = #{record.endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.checkDate != null">
+        check_date = #{record.checkDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update second_kill_goods
+    set id = #{record.id,jdbcType=BIGINT},
+      goods_id = #{record.goodsId,jdbcType=BIGINT},
+      sku_id = #{record.skuId,jdbcType=BIGINT},
+      label = #{record.label,jdbcType=VARCHAR},
+      small_pic = #{record.smallPic,jdbcType=VARCHAR},
+      old_price = #{record.oldPrice,jdbcType=DECIMAL},
+      new_price = #{record.newPrice,jdbcType=DECIMAL},
+      seller_id = #{record.sellerId,jdbcType=BIGINT},
+      total_count = #{record.totalCount,jdbcType=INTEGER},
+      stock_count = #{record.stockCount,jdbcType=INTEGER},
+      introduction = #{record.introduction,jdbcType=VARCHAR},
+      start_date = #{record.startDate,jdbcType=TIMESTAMP},
+      end_date = #{record.endDate,jdbcType=TIMESTAMP},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      check_date = #{record.checkDate,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itjiguang.yanxuan.model.SecondKillGoods">
+    update second_kill_goods
+    <set>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="smallPic != null">
+        small_pic = #{smallPic,jdbcType=VARCHAR},
+      </if>
+      <if test="oldPrice != null">
+        old_price = #{oldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="newPrice != null">
+        new_price = #{newPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerId != null">
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="totalCount != null">
+        total_count = #{totalCount,jdbcType=INTEGER},
+      </if>
+      <if test="stockCount != null">
+        stock_count = #{stockCount,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkDate != null">
+        check_date = #{checkDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itjiguang.yanxuan.model.SecondKillGoods">
+    update second_kill_goods
+    set goods_id = #{goodsId,jdbcType=BIGINT},
+      sku_id = #{skuId,jdbcType=BIGINT},
+      label = #{label,jdbcType=VARCHAR},
+      small_pic = #{smallPic,jdbcType=VARCHAR},
+      old_price = #{oldPrice,jdbcType=DECIMAL},
+      new_price = #{newPrice,jdbcType=DECIMAL},
+      seller_id = #{sellerId,jdbcType=BIGINT},
+      total_count = #{totalCount,jdbcType=INTEGER},
+      stock_count = #{stockCount,jdbcType=INTEGER},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      check_date = #{checkDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,168 @@
+.reba_banner {
+    margin: 0 auto;
+}
+.reba_banner img {
+    display: block;
+    margin: 0 auto;
+    width: 1920px;
+    height: 420px;
+}
+/* 正在进行 */
+.site_tit {
+    height: 48px;
+    padding-top: 30px;
+}
+.site_tit h3 {
+    font-size: 28px;
+    color: #333333;
+    font-weight: bold;
+    float: left;
+}
+.site_tit span {
+    float: left;
+    font-size: 14px;
+    color: #666666;
+    margin-left: 18px;
+    margin-top: 14px;
+}
+.site_mer {
+    height: 345px;
+    margin-bottom: 30px;
+}
+.site_mer li {
+    float: left;
+    width: 283px;
+    height: 343px;
+    position: relative;
+    border: 1px solid #fff;
+    margin-right: 20px;
+}
+.site_mer li.no_m {
+    margin-right: 0;
+}
+.site_mer li:hover {
+    border: 1px solid #e01222;
+    width: 283px;
+    height: 343px;
+}
+.site_mer li:hover .pan_pur {
+    border-top: none;
+}
+.site_mer li img {
+    display: block;
+    width: 283px;
+    height: 226px;
+}
+.site_mer li p {
+    text-align: center;
+    color: #333333;
+    margin-top: 5px;
+}
+.pan_pur {
+    width: 283px;
+    height: 58px;
+    border: 1px solid #e01222;
+    position: absolute;
+    left: -1px;
+    bottom: -1px;
+}
+.pan_pur .pan_money {
+    float: left;
+    padding: 10px;
+    width: 151px;
+}
+.pan_money .fav {
+    width: 63px;
+    margin-bottom: 2px;
+    float: left;
+    font-size: 16px;
+    color: #e01222;
+}
+.pan_money .cost {
+    float: left;
+    margin-bottom: 2px;
+    text-decoration-line: line-through;
+    width: 84px;
+    padding-top: 2px;
+    color: #999999;
+    margin-left: 4px;
+}
+.pan_money .res_time {
+    width: 63px;
+    float: left;
+    color: #333333;
+    font-size: 14px;
+}
+.pan_money .time {
+    margin-left: 4px;
+    font-size: 14px;
+    color: #e01222;
+}
+.pan_btn {
+    width: 112px;
+    height: 59px;
+    line-height: 58px;
+    text-align: center;
+    background: #E01222;
+    color: #ffffff;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+/* 推荐商品 */
+.site_mend {
+    margin-bottom: 30px;
+}
+.mend_l ,.mend_r {
+    float: left;
+    width: 590px;
+    height: 359px;
+}
+.mend_l {
+    margin-right: 20px;
+}
+.site_mend img {
+    display: block;
+}
+.mend_list {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #e8e8e8;
+    border-top: none;
+    height: 179px;
+    padding-left: 75px;
+}
+.mend_list p span:nth-of-type(1){
+    color: #e01222;
+}
+.mend_list p span:nth-of-type(2) {
+    color: #999999;
+    font-size: 12px;
+    margin-top: 2px;
+    text-decoration-line: line-through;
+    margin-left: 12px;
+}
+.bar span {
+    font-size: 12px;
+    font-family: "SimSun";
+    float:left;
+}
+.bar b {
+    display: block;
+    border: 1px solid #ff0000;
+    width: 57px;
+    height: 7px;
+    float: left;
+    margin-top: 3px;
+    margin-left: 4px;
+}
+.bar i {
+    display: block;
+    height: 7px;
+    width: 20%;
+    background: #ff0000;
+}
+.mend_list li {
+    float: left;
+    margin-right: 50px;
+}

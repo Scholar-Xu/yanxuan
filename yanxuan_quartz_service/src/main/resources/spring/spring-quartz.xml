@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--调度器-->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <!--调度器的名称-->
+        <property name="schedulerName" value="DefaultQuartzScheduler" />
+        <!--创建Job实例的工厂-->
+        <property name="jobFactory" >
+            <bean class="com.itjiguang.yanxuan.quartz.factory.CustomJobFactory"/>
+        </property>
+        <property name="configLocation" value="classpath:quartz.properties" />
+        <property name="triggers">
+            <list>
+                <ref bean="db_2_redis_trigger" />
+            </list>
+        </property>
+        <property name="jobDetails">
+            <list>
+                <ref bean="order_reminder_job"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--配置缓存秒杀商品的JobDetail-->
+    <bean id="db_2_redis_job" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="group" value="seckillGoods" />
+        <property name="name" value="db_2_redis_job" />
+        <property name="jobClass" value="com.itjiguang.yanxuan.quartz.job.SecKillGoodsRedisJob" />
+    </bean>
+
+    <!--配置更新缓存的CronTrigger-->
+    <bean id="db_2_redis_trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="group" value="seckillGoods" />
+        <property name="name" value="db_2_redis_trigger" />
+        <property name="jobDetail" ref="db_2_redis_job" />
+        <property name="cronExpression" value="0 59 23-15/2 * * ?" />
+    </bean>
+
+
+    <!--配置定时通知的jobDetail-->
+    <bean id="order_reminder_job" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="group" value="order" />
+        <property name="name" value="order_reminder_job" />
+        <property name="jobClass" value="com.itjiguang.yanxuan.quartz.job.OrderReminderJob" />
+        <!--设置当前JobDetail进行持久化-->
+        <property name="durability" value="true" />
+    </bean>
+</beans>

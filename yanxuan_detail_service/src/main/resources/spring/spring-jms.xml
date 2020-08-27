@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--ActiveMQConnectionFactory-->
+    <bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://192.168.142.130:61616"/>
+    </bean>
+
+    <!--配置Spring的ConnectionFactory-->
+    <bean id="jmsConnectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+        <!--目标ConnectionFactory-->
+        <property name="targetConnectionFactory" ref="activeMQConnectionFactory"/>
+    </bean>
+
+    <!--消息存放的位置-->
+    <bean id="detailPage" class="org.apache.activemq.command.ActiveMQQueue">
+        <!--设置存放的名称-->
+        <property name="physicalName" value="yanxuan_goods_page_create"/>
+    </bean>
+
+    <!--消息存放的位置-->
+    <bean id="detailPageDel" class="org.apache.activemq.command.ActiveMQQueue">
+        <!--设置存放的名称-->
+        <property name="physicalName" value="yanxuan_goods_page_del"/>
+    </bean>
+
+    <!--配置消费者的监听器-->
+    <bean id="detailPageCreateLinstenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="detailPage" />
+        <property name="messageListener" ref="detailPageListener"/>
+    </bean>
+
+    <bean id="detailPageDelLinstenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destination" ref="detailPageDel" />
+        <property name="messageListener" ref="detailPageDelListener"/>
+    </bean>
+
+</beans>

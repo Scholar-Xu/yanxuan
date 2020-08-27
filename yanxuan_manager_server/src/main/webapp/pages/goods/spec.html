@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>品牌管理</title>
+
+</head>
+<body>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#/">首页</a>
+    </li>
+    <li class="breadcrumb-item active">规格管理</li>
+</ol>
+
+<div class="card mb-3">
+    <!-- 表格上方 -->
+    <div class="card-header">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal" ng-click="initSpec()">新增</button>
+        <div class="row float-right">
+
+            <form class="d-md-inline-block form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="请输入规格名称" aria-label="Search" ng-model="name"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" ng-click="pageQuery()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>规格ID</th>
+                    <th>规格名称</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tfoot>
+
+                </tfoot>
+                <tbody>
+                <tr ng-repeat="spec in specList">
+                    <td>{{spec.id}}</td>
+                    <td>{{spec.name}}</td>
+                    <td>{{statusArray[spec.status]}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal" ng-click="initSpec(spec.id)">修改
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="delete(spec.id)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination></pagination>
+    </div>
+</div>
+<!-- 编辑数据的窗口 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="newModalLabel">规格详情</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="specName" class="col-sm-4 col-form-label">规格名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="specName" name="name" placeholder="请输入规格名称" ng-model="spec.name">
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <button type="button" class="btn btn-primary" ng-click="addSpecOption()">新增规格项</button>
+                        </div>
+                        <div class="panel-body row">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>规格项名称</th>
+                                    <th>排序序号</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tr ng-repeat="option in spec.optionList">
+                                    <td><input type="text" class="form-control" name="name" placeholder="请输入规格项名称" ng-model="option.name"></td>
+                                    <td><input type="text" class="form-control" name="sortNo" placeholder="请输入排序序号" ng-model="option.sortNo">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" ng-click="removeSpecOption($index)">删除</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

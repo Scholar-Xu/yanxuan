@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>route首页</title>
+    <!--引入AngularJS的核心模块-->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <!--路由模块-->
+    <script type="text/javascript" src="../plugins/angularjs/angular-route.min.js"></script>
+    <!--
+        根据请求的不同，展示不同的视图
+    -->
+</head>
+<body ng-app="demo">
+<a href="#/01/itjiguang">01-html</a>
+<a href="#/02">02-html</a>
+<a href="#/02/123">02-html</a>
+<hr/>
+<div ng-view></div>
+
+</body>
+<script type="text/javascript">
+    // 创建当前模块
+    var app = angular.module("demo",["ngRoute"]);
+    // 设置路由信息
+    app.config(['$routeProvider',function ($routeProvider) {
+        // 配置路由规则
+        // 第一个参数：请求的路径
+        // 第二个参数：路径对应的信息，视图的路径、控制器的名称
+        $routeProvider
+            .when("/01",{
+                templateUrl: "./08-route-01.html"
+            })
+            .when("/02",{
+                templateUrl: "./08-route-02.html"
+            })
+            .when("/02/:id",{
+                templateUrl: "./08-route-02.html",
+                controller: "controller02"
+            })
+            .when("/01/:name",{
+                templateUrl:"./08-route-01.html",
+                controller:"controller01"
+            })
+            .otherwise(
+            "/01"
+        );
+    }]);
+    
+    // 创建控制器
+    app.controller("controller01",function ($scope, $routeParams) {
+        // 从路由参数中获取传递的参数，赋值到当前作用域中的name变量中
+        $scope.name = $routeParams.name;
+    })
+    // 创建控制
+    app.controller("controller02",function ($scope, $routeParams) {
+        $scope.id = $routeParams.id;
+    })
+</script>
+</html>

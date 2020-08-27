@@ -1,0 +1,479 @@
+.s_cart {
+    padding-top: 0;
+}
+
+.take_tit {
+    font-size: 16px;
+    color: #333333;
+    height: 50px;
+    line-height: 50px;
+}
+
+.take_info {
+    border: 1px solid #e8e8e8;
+    height: 144px;
+    width: 1198px;
+}
+
+.saga_info {
+    width: 1050px;
+    padding-top: 15px;
+    float: left;
+}
+
+.saga_info dt {
+    float: left;
+    width: 76px;
+    text-align: right;
+    height: 32px;
+}
+
+.saga_info dd {
+    height: 32px;
+    float: left;
+    width: 950px;
+    color: #666666;
+    text-align: left;
+    margin-left: 40px;
+}
+
+.saga_info dd a {
+    float: left;
+    width: 600px;
+    height: 26px;
+    border: 1px solid #e8e8e8;
+    color: #999999;
+    line-height: 26px;
+    text-align: left;
+    margin-right: 20px;
+}
+.saga_info dd a.current {
+    border: 1px solid #B69F73;
+    background: url(../images/triagn.png) no-repeat right bottom;
+}
+
+.info_btn {
+    float: right;
+    padding: 10px 17px 0 0;
+    text-align: right;
+    width: 106px;
+}
+
+.info_btn p {
+    width: 75px;
+    float: right;
+}
+
+.info_btn input {
+    width: 14px;
+    height: 14px;
+    float: left;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+
+.info_btn .add_take {
+    margin-top: 20px;
+    float: right;
+}
+
+.delivery {
+    padding-top: 30px;
+    font-size: 16px;
+    color: #333333;
+    padding-bottom: 14px;
+}
+
+.ship_met {
+    border: 1px solid #e8e8e8;
+    width: 1198px;
+}
+
+.met_t {
+    height: 99px;
+    padding-top: 30px;
+    padding-left: 41px;
+}
+
+.met_t p {
+    line-height: 19px;
+    margin-bottom: 17px;
+}
+
+.met_t p input {
+    float: left;
+    width: 19px;
+    height: 19px;
+    margin-right: 39px;
+}
+
+.met_b {
+    width: 1168px;
+    margin: 0 auto;
+    border-top: 1px solid #e8e8e8;
+    height: 44px;
+    line-height: 44px;
+    text-align: right;
+}
+
+.met_b span {
+    color: #e78167;
+}
+
+.met_b span:nth-of-type(1) {
+    margin-right: 44px;
+}
+
+.met_b span:nth-of-type(2) {
+    margin-right: 8px;
+}
+
+.list_tit {
+    font-size: 16px;
+    line-height: 44px;
+}
+
+.cart_tit li:nth-of-type(1) {
+    margin-left: 237px;
+    margin-right: 237px;
+}
+
+.cart_list li span:nth-of-type(2) {
+    margin-left: 56px;
+}
+
+.cart_tit li:nth-of-type(2) {
+    margin-right: 202px;
+}
+
+.cart_list li span:nth-of-type(3) {
+    margin-left: 202px;
+}
+
+.cart_tit li:nth-of-type(3) {
+    margin-right: 190px;
+}
+
+.cart_tit li:nth-of-type(4) {
+    margin-right: 168px;
+}
+
+.cart_tit li:nth-of-type(5) {
+    margin-right: 0;
+}
+
+.cart_list img {
+    margin-left: 41px;
+}
+
+.cart_list li span:nth-of-type(1) {
+    margin-left: 11px;
+}
+
+.cart_list .number {
+    margin-left: 207px;
+}
+
+.cart_list li span:nth-of-type(4) {
+    margin-left: 187px;
+}
+
+.cart_foot b {
+    font-weight: 400;
+    color: #e78167;
+}
+
+.cart_foot span {
+    float: right;
+}
+
+.cart_foot span:nth-of-type(2) {
+    float: right;
+}
+
+.cart_foot span:nth-of-type(1) {
+    margin-right: 26px;
+    margin-left: 54px;
+}
+
+.shop_pay {
+    margin-top: 13px;
+    padding-left: 3px;
+}
+
+.shop_pay span {
+    float: left;
+    margin-top: 3px;
+}
+
+.shop_pay textarea {
+    width: 315px;
+    height: 85px;
+    float: left;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 10px;
+    resize: none;
+}
+
+.mode_pay {
+    margin-top: 20px;
+}
+
+.mode_pay h5 {
+    margin-bottom: 23px;
+}
+
+.mode li {
+    float: left;
+    padding: 13px 25px;
+    border: 1px solid #e8e8e8;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.mode li.current {
+    padding: 12px 24px;
+    border: 2px solid #fe4d06;
+    background: url("../images/triagn_pay.png") no-repeat right bottom;
+}
+
+.pay_btn {
+    width: 317px;
+    float: right;
+    margin-top: 34px;
+    font-size: 16px;
+    padding-bottom: 30px;
+}
+
+.pay_btn p {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.pay_btn p span {
+    color: #e78167;
+    float: none;
+}
+
+.pay_btn p strong:nth-of-type(1) {
+    float: left;
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+.pay_btn p strong:nth-of-type(2) {
+    color: #e78167;
+    float: right;
+    font-size: 26px;
+}
+
+.pay_btn a {
+    color: #ffffff;
+    width: 141px;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    float: right;
+    border-radius: 5px;
+    background-color: #b39f78;
+}
+
+/* 支付完毕弹出页面样式 */
+.point_out {
+    width: 1000px;
+    margin: 60px auto 30px;
+}
+
+.point_out li {
+    height: 208px;
+    background: #FCF7F2;
+    padding-top: 30px;
+    color: #b39f78;
+    display: none;
+}
+
+.point_out li.current {
+    display: block;
+}
+
+.point_out li a {
+    color: #666666;
+}
+
+.out_t {
+    width: 640px;
+    height: 81px;
+    border-bottom: 2px solid #B39F78;
+    margin: 0 auto;
+}
+
+.out_t p {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.out_t p.o_mart {
+    padding-top: 21px;
+}
+
+.out_t p span,
+.out_b span {
+    color: #e60012;
+}
+
+.out_t p span.t_margin {
+    margin-right: 20px;
+}
+
+.out_b {
+    margin-top: 30px;
+}
+
+.out_b p {
+    text-align: center;
+    height: 26px;
+}
+
+/* cashier页面样式 */
+
+/* cas_header部分 */
+.cas_header {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.cas_logo h1 {
+    float: left;
+    width: 110px;
+    height: 30px;
+    overflow: hidden;
+}
+
+.cas_logo h1 a {
+    display: block;
+    width: 110px;
+    height: 30px;
+    text-indent: -999px;
+    background: url('../images/logo.png') no-repeat;
+    background-size: 100%;
+}
+
+.cas_logo h5 {
+    float: left;
+    font-size: 22px;
+    line-height: 21px;
+    margin-left: 15px;
+}
+
+.cas_nav {
+    float: right;
+}
+
+.cas_nav b {
+    margin: 0 15px;
+    color: #e8e8e8;
+}
+
+.cas_nav a {
+    color: #333;
+}
+
+.order_am .cas_ord {
+    float: left;
+}
+
+.order_am .cas_amunt {
+    float: right;
+}
+
+.cas_amunt b {
+    font-size: 18px;
+    color: #e60012;
+    margin: 0 3px;
+    font-weight: 700;
+}
+
+.cashier_box {
+    height: 554px;
+    box-shadow: #999999 0 0 15px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.cashier_box h6 {
+    float: left;
+    margin-top: 15px;
+    margin-left: 42px;
+    font-size: 16px;
+}
+
+.cashier_box .cas_Qr {
+    float: left;
+    font-size: 12px;
+    color: #666666;
+    padding-top: 38px;
+    margin-left: 127px;
+}
+
+.cashier_box .cas_qa {
+    float: left;
+    width: 329px;
+    height: 421px;
+    background: url(../images/cas_qa_01.png) no-repeat;
+    margin-top: 70px;
+    margin-left: 125px;
+}
+
+.cashier_box .cas_Qr b {
+    color: #e60012;
+    margin: 0 2px;
+}
+
+.cas_Qr .qr_code {
+    width: 257px;
+    height: 257px;
+    /*background: url(../images/cas_qr.png) no-repeat center center;*/
+    padding: 21px;
+    border: 1px solid #e8e8e8;
+    margin-top: 25px;
+}
+
+.cas_Qr .qr_code img {
+    display: block;
+}
+
+.cas_Qr .qr_qa {
+    width: 300px;
+    height: 66px;
+    background: #445F85 url(../images/cas_qa.png) no-repeat center center;
+    margin-top: 20px;
+}
+.addres_btn {
+    display: block;
+    font-size: 13px;
+    color: #ffffff;
+    width: 121px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #B69F73;
+    text-align: center;
+    border-radius: 15px;
+    margin-left: 4px;
+}
+.address_modal {
+    display: none;
+    width: 600px;
+    height: 450px;
+    border: 1px solid #e8e8e8;
+    background: #cccccc;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    margin-left: -195px;
+
+}
+.add_site {
+    /*width: 920px;*/
+    margin: 30px auto 0;
+}

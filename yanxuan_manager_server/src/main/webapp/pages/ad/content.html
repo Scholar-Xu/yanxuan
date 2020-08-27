@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>广告管理</title>
+
+</head>
+<body>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#/">首页</a>
+    </li>
+    <li class="breadcrumb-item active">广告管理</li>
+</ol>
+
+<div class="card mb-3">
+    <!-- 表格上方 -->
+    <div class="card-header">
+        <a type="button" class="btn btn-primary" href="#/ad/edit">新增</a>
+        <div class="row float-right">
+            <form class="d-md-inline-block form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="标题名称" aria-label="Search"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="card-body">
+        <div class="table-responsive text-center">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>广告标题</th>
+                    <th>URL</th>
+                    <th>内容</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in dataList">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.url}}</td>
+                    <td ng-bind-html="item.content|to_trusted"></td>
+                    <td>{{adStatusArray[item.status]}}</td>
+                    <td>
+                        <a type="button" class="btn btn-primary" href="#/ad/edit/{{item.id}}">修改</a>
+                        <button type="button" class="btn btn-primary" ng-click="delete(item.id) ">停用</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination></pagination>
+    </div>
+</div>
+</body>
+</html>

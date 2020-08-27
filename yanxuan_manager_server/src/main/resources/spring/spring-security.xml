@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!--设置不进行权限检查的访问路径-->
+    <http security="none" pattern="/img/**" />
+    <http security="none" pattern="/js/**" />
+    <http security="none" pattern="/plugins/**" />
+    <http security="none" pattern="/pages/**" />
+    <http security="none" pattern="/login.html**" />
+
+    <!--设置权限检查-->
+    <http use-expressions="false">
+        <!--所有请求都进行需要具有ROLE_ADMIN权限-->
+        <intercept-url pattern="/**" access="ROLE_ADMIN" />
+        <!--开启登录表单-->
+        <form-login login-page="/login.html" default-target-url="/index.html" always-use-default-target="true" authentication-failure-url="/login.html" />
+        <!--开启注销-->
+        <logout logout-success-url="/login.html" delete-cookies="JSESSIONID" invalidate-session="true"/>
+        <!--关闭csrf-->
+        <csrf disabled="true" />
+    </http>
+
+    <!--认证管理器-->
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="root" password="{noop}root" authorities="ROLE_ADMIN"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>

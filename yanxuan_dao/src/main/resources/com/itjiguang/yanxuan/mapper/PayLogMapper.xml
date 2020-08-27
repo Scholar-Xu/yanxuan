@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itjiguang.yanxuan.mapper.PayLogMapper">
+  <resultMap id="BaseResultMap" type="com.itjiguang.yanxuan.model.PayLog">
+    <id column="pay_order_no" jdbcType="VARCHAR" property="payOrderNo" />
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="pay_date" jdbcType="TIMESTAMP" property="payDate" />
+    <result column="total_fee" jdbcType="BIGINT" property="totalFee" />
+    <result column="trade_no" jdbcType="VARCHAR" property="tradeNo" />
+    <result column="trade_status" jdbcType="VARCHAR" property="tradeStatus" />
+    <result column="pay_type" jdbcType="CHAR" property="payType" />
+    <result column="goods_order_no" jdbcType="VARCHAR" property="goodsOrderNo" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    pay_order_no, account_id, create_date, pay_date, total_fee, trade_no, trade_status, 
+    pay_type, goods_order_no
+  </sql>
+  <select id="selectByExample" parameterType="com.itjiguang.yanxuan.model.PayLogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pay_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_log
+    where pay_order_no = #{payOrderNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pay_log
+    where pay_order_no = #{payOrderNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itjiguang.yanxuan.model.PayLogExample">
+    delete from pay_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itjiguang.yanxuan.model.PayLog">
+    insert into pay_log (pay_order_no, account_id, create_date, 
+      pay_date, total_fee, trade_no, 
+      trade_status, pay_type, goods_order_no
+      )
+    values (#{payOrderNo,jdbcType=VARCHAR}, #{accountId,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{payDate,jdbcType=TIMESTAMP}, #{totalFee,jdbcType=BIGINT}, #{tradeNo,jdbcType=VARCHAR}, 
+      #{tradeStatus,jdbcType=VARCHAR}, #{payType,jdbcType=CHAR}, #{goodsOrderNo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itjiguang.yanxuan.model.PayLog">
+    insert into pay_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="payOrderNo != null">
+        pay_order_no,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="payDate != null">
+        pay_date,
+      </if>
+      <if test="totalFee != null">
+        total_fee,
+      </if>
+      <if test="tradeNo != null">
+        trade_no,
+      </if>
+      <if test="tradeStatus != null">
+        trade_status,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="goodsOrderNo != null">
+        goods_order_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="payOrderNo != null">
+        #{payOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalFee != null">
+        #{totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="tradeNo != null">
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeStatus != null">
+        #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=CHAR},
+      </if>
+      <if test="goodsOrderNo != null">
+        #{goodsOrderNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itjiguang.yanxuan.model.PayLogExample" resultType="java.lang.Long">
+    select count(*) from pay_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pay_log
+    <set>
+      <if test="record.payOrderNo != null">
+        pay_order_no = #{record.payOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountId != null">
+        account_id = #{record.accountId,jdbcType=BIGINT},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.payDate != null">
+        pay_date = #{record.payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.totalFee != null">
+        total_fee = #{record.totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.tradeNo != null">
+        trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeStatus != null">
+        trade_status = #{record.tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payType != null">
+        pay_type = #{record.payType,jdbcType=CHAR},
+      </if>
+      <if test="record.goodsOrderNo != null">
+        goods_order_no = #{record.goodsOrderNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pay_log
+    set pay_order_no = #{record.payOrderNo,jdbcType=VARCHAR},
+      account_id = #{record.accountId,jdbcType=BIGINT},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      pay_date = #{record.payDate,jdbcType=TIMESTAMP},
+      total_fee = #{record.totalFee,jdbcType=BIGINT},
+      trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      trade_status = #{record.tradeStatus,jdbcType=VARCHAR},
+      pay_type = #{record.payType,jdbcType=CHAR},
+      goods_order_no = #{record.goodsOrderNo,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itjiguang.yanxuan.model.PayLog">
+    update pay_log
+    <set>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payDate != null">
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalFee != null">
+        total_fee = #{totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="tradeNo != null">
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeStatus != null">
+        trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=CHAR},
+      </if>
+      <if test="goodsOrderNo != null">
+        goods_order_no = #{goodsOrderNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pay_order_no = #{payOrderNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itjiguang.yanxuan.model.PayLog">
+    update pay_log
+    set account_id = #{accountId,jdbcType=BIGINT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      pay_date = #{payDate,jdbcType=TIMESTAMP},
+      total_fee = #{totalFee,jdbcType=BIGINT},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=CHAR},
+      goods_order_no = #{goodsOrderNo,jdbcType=VARCHAR}
+    where pay_order_no = #{payOrderNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

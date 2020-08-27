@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>controller</title>
+    <!--引入AngularJS的核心模块-->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <!--
+        设置demo模块的控制器，在控制器中完成参数的初始化
+
+        ng-controller 启用控制器
+    -->
+</head>
+<body ng-app="demo" ng-controller="demoController" ng-init="initParam()">
+<input type="text" name="yourName" ng-model="yourname">
+<hr/>
+欢迎您，<span ng-bind="yourname"></span>
+<hr/>
+再次欢迎您，{{yourname}}
+<hr/>
+第三次欢迎您，{{getName()}}
+</body>
+<script type="text/javascript">
+    // 创建模块demo
+    // 第一个参数：当前模块的名称
+    // 第二个参数：依赖的模块
+    var app = angular.module("demo",[]);
+    // 设置当前模块的控制器
+    // 第一个：控制器的名称
+    // 第二个：控制器的执行逻辑，也就是回调函数，参数：$scope 相当于当前模块的上下文，包含变量、方法
+    app.controller("demoController", function ($scope) {
+        // 设置yourname的变量赋值
+        $scope.yourname = "极光学苑" ;
+        // 定义方法
+        $scope.initParam = function () {
+            alert($scope.yourname);
+            $scope.yourname = "极光" ;
+        };
+
+        $scope.getName = function () {
+            return $scope.yourname;
+        }
+    });
+</script>
+</html>

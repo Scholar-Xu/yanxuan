@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <!--引入AngularJS的核心模块-->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <!--
+        在输入框中输入内容，然后再当前页面显示出来
+        1. 设置Angular的程序入口
+            ng-app 可以应用在任何的标签上
+        2. 把输入框的值绑定到Angularjs程序中
+            ng-model 设置的值是angularjs程序中的变量名称
+        3. 把绑定到Angularjs程序中的值展示出来
+            ng-bind 输出变量的值
+            {{变量的名称}}
+
+
+        初始化指令 ng-init 设置表达式
+            yourname设置值为 极光学苑
+            ng-model 不仅仅是把视图中的值传入到变量中，还可以把变量中的值展示出来
+    -->
+</head>
+<body ng-app ng-init="yourname = '极光学苑'">
+    <input type="text" name="yourName" ng-model="yourname">
+    <hr/>
+    欢迎您，<span ng-bind="yourname"></span>
+    <hr/>
+    再次欢迎您，{{yourname}}
+</body>
+</html>

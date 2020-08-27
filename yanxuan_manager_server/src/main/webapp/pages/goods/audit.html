@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>商品审核</title>
+</head>
+<body>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#/">首页</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#/goods/audit">商品审核</a>
+    </li>
+</ol>
+
+<div class="card mb-3 text-center">
+    <!-- 表格上方 -->
+    <div class="card-header">
+        <div class="row float-right">
+            <form class="d-md-inline-block form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="商品的名称" aria-label="Search"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" ng-click="pageQuery()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>商品ID</th>
+                    <th>商品名称</th>
+                    <th>商品卖点</th>
+                    <th>商品价格</th>
+                    <th>品牌</th>
+                    <th>所属类目</th>
+                    <th>店铺名称</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="goods in goodsList">
+                    <td>{{goods.id}}</td>
+                    <td>{{goods.name}}</td>
+                    <td>{{goods.sellPoint}}</td>
+                    <td>{{goods.price}}</td>
+                    <td>{{goods.brandName}}</td>
+                    <td>{{goods.categoryName}}</td>
+                    <td>{{goods.sellerName}}</td>
+                    <td>{{statusArray[goods.status]}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal" ng-click="getGoodsInfoById(goods.id)">详情
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination></pagination>
+    </div>
+</div>
+<!-- 编辑数据的窗口 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="newModalLabel">商品详情</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- 商品信息 -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="nav-item active">
+                        <a class="nav-link" data-target="#base" id="base-tab" role="tab" data-toggle="tab"
+                           aria-controls="base" aria-selected="false">基本信息</a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link" data-target="#spec" id="spec-tab" role="tab" data-toggle="tab"
+                           aria-controls="spec" aria-selected="false">SKU信息</a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link" data-target="#pic" id="pic-tab" role="tab" data-toggle="tab"
+                           aria-controls="pic" aria-selected="false">图片信息</a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link" data-target="#detail" id="detail-tab" role="tab" data-toggle="tab"
+                           aria-controls="detail" aria-selected="false">商品介绍</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <!-- 基本信息 -->
+                    <div role="tabpanel" class="tab-pane fade show active" id="base" aria-labelledby="base-tab">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>商品名称</th>
+                                <td>{{entity.name}}</td>
+                            </tr>
+                            <tr>
+                                <th>商品标题</th>
+                                <td>{{entity.label}}</td>
+                            </tr>
+                            <tr>
+                                <th>商品卖点</th>
+                                <td>{{entity.sellPoint}}</td>
+                            </tr>
+                            <tr>
+                                <th>商品品牌</th>
+                                <td>{{entity.brandName}}</td>
+                            </tr>
+                            <tr>
+                                <th>商品价格</th>
+                                <td>{{entity.price}}</td>
+                            </tr>
+                            <tr>
+                                <th>商品类目</th>
+                                <td>{{entity.categoryName}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- 商品规格信息 -->
+                    <div role="tabpanel" class="tab-pane fade" id="spec" aria-labelledby="spec-tab">
+                        <table class="table table-striped tile">
+                            <thead>
+                            <th ng-repeat="spec in entity.specCheckedList track by $index">{{spec.specName}}</th>
+                            <th>价格</th>
+                            <th>库存量</th>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="sku in entity.skuList">
+                                <td ng-repeat="spec in entity.specCheckedList track by $index">{{sku.specs[spec.specName]}}</td>
+                                <td>{{sku.price}}</td>
+                                <td>{{sku.stockCount}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- 图片信息 -->
+                    <div role="tabpanel" class="tab-pane fade" id="pic" aria-labelledby="pic-tab">
+                        <div class="row" style="margin-top: 5px">
+                            <div class="col-xs-3 col-md-2" ng-repeat="pic in entity.picUrl">
+                                <img src="{{pic}}" class="img-thumbnail">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 商品介绍 -->
+                    <div role="tabpanel" class="tab-pane fade" id="detail" aria-labelledby="detail-tab">
+                        <div id="detial">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="pass(entity.id)">审核通过</button>
+                <button type="button" class="btn btn-primary" ng-click="back(entity.id)">审核退回</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

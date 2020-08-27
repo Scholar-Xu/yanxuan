@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 事务管理 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- 开启声明式事物 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- dubbbo相关 -->
+    <dubbo:protocol name="dubbo" port="20886" />
+    <dubbo:registry address="zookeeper://192.168.142.129:2181" timeout="50000"/>
+    <dubbo:application name="yanxuan_cart_service"/>
+
+    <dubbo:annotation package="com.itjiguang.yanxuan" />
+</beans>

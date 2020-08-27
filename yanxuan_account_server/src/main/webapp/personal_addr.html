@@ -1,0 +1,150 @@
+<!-- 收货地址 -->
+<li class="">
+	<h3>收货地址</h3>
+	<ul class="addres_list">
+		<li class="add_list_tit">
+			<span>收货人</span>
+			<span>所在地区</span>
+			<span>详细地址</span>
+			<span>电话/手机</span>
+			<span>操作</span>
+		</li>
+		<li>
+			<p>董萌萌</p>
+			<p>
+				北京 北京市 <br />
+				朝阳区 光明街道
+			</p>
+			<p>安立路安源小区嘉12号7单元430</p>
+			<p>86+ 186******23</p>
+			<p>
+				<a href="javascript:;">修改</a>
+				<span>|</span>
+				<a href="javascript:;">删除</a>
+			</p>
+			<p>
+				<a href="javascript:;">默认地址</a>
+			</p>
+		</li>
+		<li>
+			<p>董萌萌</p>
+			<p>
+				北京 北京市 <br />
+				朝阳区 光明街道
+			</p>
+			<p>安立路安源小区嘉12号7单元430</p>
+			<p>86+ 186******23</p>
+			<p>
+				<a href="javascript:;">修改</a>
+				<span>|</span>
+				<a href="javascript:;">删除</a>
+			</p>
+			<p>
+				<a href="javascript:;">默认地址</a>
+			</p>
+		</li>
+		<li>
+			<p>董萌萌</p>
+			<p>
+				北京 北京市 <br />
+				朝阳区 光明街道
+			</p>
+			<p>安立路安源小区嘉12号7单元430</p>
+			<p>86+ 186******23</p>
+			<p>
+				<a href="javascript:;">修改</a>
+				<span>|</span>
+				<a href="javascript:;">删除</a>
+			</p>
+			<p>
+				<a href="javascript:;">默认地址</a>
+			</p>
+		</li>
+		<li>
+			<p>董萌萌</p>
+			<p>
+				北京 北京市 <br />
+				朝阳区 光明街道
+			</p>
+			<p>安立路安源小区嘉12号7单元430</p>
+			<p>86+ 186******23</p>
+			<p>
+				<a href="javascript:;">修改</a>
+				<span>|</span>
+				<a href="javascript:;">删除</a>
+			</p>
+			<p>
+				<a href="javascript:;">默认地址</a>
+			</p>
+		</li>
+	</ul>
+	<div class="add_site">
+		<a href="javascript:;" class="addres_btn">添加地址</a>
+		<form action="" class="site_info">
+			<ul>
+				<li class="clearfix">
+					<p>
+						<span class="red">*</span>地址信息
+					</p>
+					<div class="wrap">
+						<!--<input class="input" name="" id="city" type="text" placeholder="请选择省/市/区/街道"
+							autocomplete="off" readonly="true" />
+						<s></s>-->
+						<select class="select" ng-options="item.id as item.name for item in provinceList" ng-model="entity.areaProvinceId">
+
+						</select> /
+						<select class="select" ng-options="item.id as item.name for item in cityList" ng-model="entity.areaCityId">
+							<option>请先选择省</option>
+						</select> /
+						<select class="select"  ng-options="item.id as item.name for item in areaList" ng-model="entity.areaTownId">
+							<option>朝阳区</option>
+						</select>
+					</div>
+				</li>
+				<li class="clearfix">
+					<p>
+						<span class="red">*</span>详细地址
+					</p>
+					<div class="xiangxi">
+						<textarea name="" id="" cols="30" rows="10"
+							placeholder="请精确到门牌号，例如一号楼一单元1001" ng-model="entity.detailAddress"></textarea>
+					</div>
+				</li>
+				<li class="clearfix">
+					<p>
+						<span class="red"></span>邮政编码
+					</p>
+					<div class="post_code">
+						<input type="text" placeholder="请填写邮编" ng-model="entity.postalCode">
+					</div>
+				</li>
+				<li class="clearfix">
+					<p>
+						<span class="red">*</span>收货人姓名
+					</p>
+					<div class="post_code">
+						<input type="text" placeholder="请填写姓名" ng-model="entity.receiver">
+					</div>
+				</li>
+				<li class="clearfix">
+					<p>
+						<span class="red">*</span>手机号码
+					</p>
+					<div class="post_code">
+						<input type="text" id="txt_ide" list="ide" class="code_input"
+							placeholder="中国大陆+86" />
+						<datalist id="ide">
+							<option value="中国大陆+86" />
+							<option value="中国大陆+86" />
+						</datalist>
+						<input type="text" placeholder="请填写手机号码" class="phone_num" ng-model="entity.phoneNum">
+					</div>
+				</li>
+			</ul>
+			<p>
+				<input type="radio" value="1" ng-model="entity.isDefault">设为默认地址
+			</p>
+			<input type="button" value="保存" class="preserve" ng-click="save()">
+		</form>
+	</div>
+</li>

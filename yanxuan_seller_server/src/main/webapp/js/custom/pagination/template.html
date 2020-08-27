@@ -1,0 +1,57 @@
+<!--
+    可以使用所在模块的作用域
+    所在模块中需要设置模板需要的相应参数
+    $scope.pageOption  = {
+        total ; 0 , // 总记录数
+        currentPage : 1 , // 当前页码值，初始值为1
+        pageSize : 10, // 每页显示的记录数，初始值为10
+        pageSizeArr : [10, 20 ,30, 40, 50] , // 每页显示记录的选择数组
+        onChange : function () {
+            // 页码和每页显示记录数发生变化执行触发的业务逻辑，，可以用来请求数据查询的操作
+        }
+    }
+-->
+<div class="row">
+    <div class="col-sm-12 col-md-3">
+        <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
+            共 {{pageOption.total}} 条数据
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item " ng-class="{disabled: pageOption.currentPage ===1}" ng-click="prePage()">
+                    <button class="page-link" data-target="#" tabindex="-1" >Previous</button>
+                </li>
+                <li class="page-item" ng-class="{active:pageOption.currentPage === num, disabled:num == '...' }" ng-repeat="num in pagesArray track by $index" ng-click="changePage(num)">
+                    <button class="page-link" data-target="#">{{num}}</button>
+                </li>
+                <!--<li class="page-item active"><a class="page-link" data-target="#">1</a></li>
+                <li class="page-item"><a class="page-link" data-target="#">2</a></li>
+                <li class="page-item"><a class="page-link" data-target="#">3</a></li>-->
+                <li class="page-item" ng-class="{disabled: pageOption.currentPage === pages}" ng-click="nextPage()">
+                    <button class="page-link" data-target="#" tabindex="-1" >Next</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-sm-12 col-md-3 row float-right">
+        <div class="col-sm-7 col-form-label text-right">
+            每页显示
+        </div>
+        <div class="col-sm-3 align-items-md-center">
+            <select class="form-control" ng-options="size for size in pageOption.pageSizeArr" ng-model="pageOption.pageSize">
+                <!--<option ng-repeat="size in pageOption.pageSizeArr" value="{{size}}" ng-selected="size === pageOption.pageSize">{{size}}</option>-->
+
+                <!--<option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>-->
+            </select>
+        </div>
+        <div class="col-sm-2 col-form-label text-left">
+            条
+        </div>
+    </div>
+</div>

@@ -1,0 +1,355 @@
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: #f7f7f7;
+    padding-top: 0;
+}
+
+.header .logo {
+    width: 153px;
+    height: 42px;
+    float: left;
+    overflow: hidden;
+    margin: 30px 0 0 16px;
+}
+
+.logo a {
+    display: block;
+    text-indent: -9999px;
+    width: 100%;
+    height: 100%;
+    background: url(../images/logo.png) no-repeat;
+}
+
+.header_box p {
+    float: left;
+    width: 240px;
+    height: 21px;
+    font-size: 20px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(179, 159, 120, 1);
+    margin-left: 72px;
+    margin-top: 50px;
+}
+
+.app_list {
+    margin-top: 30px;
+}
+
+.prompt_list {
+    float: left;
+    width: 210px;
+
+}
+
+.prompt_list h5 {
+    width: 210px;
+    height: 50px;
+    line-height: 50px;
+    color: #ffff;
+    font-size: 14px;
+    text-align: center;
+    background: #B39F78;
+}
+
+.prompt_list dl {
+    width: 210px;
+    margin-top: 24px;
+}
+
+.prompt_list dt {
+    font-size: 14px;
+    font-weight: 700;
+    text-indent: 15px;
+}
+
+.prompt_list dd {
+    width: 208px;
+    height: 50px;
+    line-height: 50px;
+    background: #f7f7f7;
+    text-indent: 15px;
+    margin: 10px auto 0;
+}
+
+.tabulation {
+    width: 960px;
+    float: right;
+}
+
+.list_nav {
+    width: 960px;
+    height: 50px;
+    position: relative;
+}
+
+.list_nav .nav_bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 160px;
+    height: 50px;
+    border-radius: 0 25px 25px 0;
+    background: #B39F78;
+}
+
+.list_nav ul {
+    position: relative;
+}
+
+.list_nav ul li {
+    float: left;
+    width: 160px;
+    height: 50px;
+    line-height: 50px;
+    color: #333;
+    text-indent: 63px;
+    background: url('../images/list_nav_icon.png') no-repeat 35px 0;
+}
+
+.list_nav ul li.finish {
+    color: #fff;
+}
+
+.list_nav ul li:nth-of-type(2) {
+    background-position: 35px -100px;
+}
+
+.list_nav ul li:nth-of-type(3) {
+    background-position: 35px -200px;
+}
+
+.list_nav ul li:nth-of-type(4) {
+    background-position: 35px -300px;
+}
+
+.list_nav ul li:nth-of-type(5) {
+    background-position: 35px -400px;
+}
+
+.list_nav ul li:nth-of-type(6) {
+    background-position: 35px -500px;
+}
+
+.list_nav ul li.finish:nth-of-type(2) {
+    background-position: 35px -50px;
+}
+
+.list_nav ul li.finish:nth-of-type(3) {
+    background-position: 35px -150px;
+}
+
+.list_nav ul li.finish:nth-of-type(4) {
+    background-position: 35px -250px;
+}
+
+.list_nav ul li.finish:nth-of-type(5) {
+    background-position: 35px -350px;
+}
+
+.list_nav ul li.finish:nth-of-type(6) {
+    background-position: 35px -450px;
+}
+
+.tab_con {
+    width: 900px;
+    padding-top: 36px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.tab_con h5 {
+    font-size: 14px;
+}
+
+.article {
+    width: 853px;
+    height: 529px;
+    border: 1px solid #e8e8e8;
+    padding: 20px 30px 20px 15px;
+    overflow-y: scroll;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 32px;
+    margin-top: 21px;
+}
+
+.tab_con label {
+    padding-top: 19px;
+    margin-left: 3px;
+    line-height: 14px;
+    float: left;
+}
+
+.tab_con label input[type=checkbox] {
+    width: 14px;
+    height: 14px;
+    margin-right: 11px;
+    float: left;
+    padding-top: 19px
+}
+
+.fin_btn {
+    width: 150px;
+    height: 35px;
+    background: rgba(179, 159, 120, 1);
+    border-radius: 18px;
+    margin: 54px auto 0;
+    display: block;
+    color: #fff;
+    line-height: 35px;
+    text-align: center;
+}
+
+/* 隐藏 */
+.dis_none {
+    display: none;
+}
+
+/* 隐藏 */
+.contacts,
+.car_cer_info,
+.acc_open_info,
+.store_info {
+    padding-left: 249px;
+    padding-top: 30px;
+}
+
+.contacts p span,
+.car_cer_info p span,
+.acc_open_info p span,
+.store_info p span {
+    color: #E90000;
+    margin-right: 5px;
+}
+
+.contacts input,
+.car_cer_info input,
+.acc_open_info input,
+.store_info input {
+    margin: 10px 0 22px 5px;
+    width: 448px;
+    height: 33px;
+    border: 1px solid #e8e8e8;
+    text-indent: 15px;
+}
+
+.cont_btn {
+    padding-left: 92px;
+    margin-top: 50px;
+}
+
+.cont_btn a {
+    float: left;
+    width: 118px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid #B39F78;
+    color: #B39F78;
+    margin-right: 30px;
+}
+
+.cont_btn .next_btn {
+    color: #fff;
+    background: #B39F78;
+}
+
+.promise {
+    margin-top: 50px;
+}
+
+.car_cer_info select {
+    width: 155px;
+    height: 33px;
+    line-height: 33px;
+    color: #999;
+    border: 1px solid #e8e8e8;
+    margin-left: 5px;
+}
+
+.car_cer_info input:nth-last-of-type(1) {
+    width: 277px;
+    height: 33px;
+    margin-left: 14px;
+}
+
+.car_cer_info .file_info {
+    width: auto;
+    height: auto;
+    border: none;
+    text-indent: 0;
+    margin-bottom: 0;
+}
+
+.xiaotishi {
+    margin-top: 12px;
+    margin-bottom: 20px;
+    color: #B39F78;
+    font-size: 12px;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.acc_open_info select,
+.store_info select {
+    margin: 10px 0 22px 5px;
+    width: 448px;
+    height: 33px;
+    border: 1px solid #e8e8e8;
+    text-indent: 12px;
+    color: #888;
+}
+
+.store_info textarea {
+    width: 428px;
+    height: 83px;
+    border: 1px solid #e8e8e8;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.complete {
+    width: 900px;
+    height: 250px;
+    background: #FCF7F2;
+    margin: 0 auto;
+}
+
+.complete img {
+    display: block;
+    margin: 30px auto 0;
+}
+
+.complete p {
+    width: 640px;
+    text-align: center;
+    line-height: 25px;
+    margin: 21px auto;
+    color: #666666;
+    font-size: 14px;
+}
+
+.complete p:nth-of-type(1) {
+    border-bottom: 2px dashed #B39F78;
+    color: #B39F78;
+    font-size: 16px;
+    padding-bottom: 20px;
+}
+
+.complete p a {
+    color: #B39F78;
+    text-decoration: underline;
+}
+

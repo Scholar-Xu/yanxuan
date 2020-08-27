@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <!--引入AngularJS的核心模块-->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <!--
+        完成列表的展示  ['JavaEE','前端','大数据','人工智能']
+
+        在循环展示的元素中使用 ng-repeat执行遍历的集合表达式
+    -->
+</head>
+<body ng-app="demo" ng-controller="demoController">
+    <!--
+        遍历list集合，从集合每次得到的内容，赋值给item
+    -->
+    <ul >
+        <li ng-repeat="item in list">{{item}}</li>
+    </ul>
+
+<hr/>
+<table >
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+    </tr>
+    <tr ng-repeat="user in userList">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.age}}</td>
+    </tr>
+</table>
+</body>
+<script type="text/javascript">
+    angular.module("demo",[]).controller("demoController",function ($scope) {
+        $scope.list = ['JavaEE','前端','大数据','人工智能'];
+
+        $scope.userList = [
+            {id: 100, name:'极光学苑', age :18},
+            {id: 101, name:'极光学苑1', age :18},
+            {id: 102, name:'极光学苑2', age :18}
+        ]
+    })
+</script>
+</html>

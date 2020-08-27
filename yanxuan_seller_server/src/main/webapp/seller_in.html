@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>极光严选</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/merchant.css">
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/million.js"></script>
+    <script src="js/merchant.js"></script>
+    <!--AngularJS的相关文件-->
+    <script type="text/javascript" src="plugins/angular/angular.min.js"></script>
+</head>
+
+<body ng-app="seller" ng-controller="sellerController">
+    <!-- 顶部导航条区域开始 -->
+    <div class="top_bar">
+        <div class="inner_c">
+            <!-- 发货城市开始 -->
+            <div class="s_city">
+                <span>送货至:</span>
+                <div class="cur_city">
+                    <span>四川</span>
+                    <div class="s_city_bg">
+                        <span class="arrow_top"></span>
+                        <h4>请选择所在的收货地区</h4>
+                        <ul>
+                            <li>
+                                <span>A</span>
+                                <a href="javascript:void(0);">安徽</a>
+                                <a href="javascript:void(0);">澳门</a>
+                            </li>
+                            <li>
+                                <span>B</span>
+                                <a href="javascript:void(0);">北京</a>
+                            </li>
+                            <li>
+                                <span>C</span>
+                                <a href="javascript:void(0);">重庆</a>
+                            </li>
+                            <li>
+                                <span>F</span>
+                                <a href="javascript:void(0);">福建</a>
+                            </li>
+                            <li>
+                                <span>G</span>
+                                <a href="javascript:void(0);">广东</a>
+                                <a href="javascript:void(0);">广西</a>
+                                <a href="javascript:void(0);">贵州</a>
+                                <a href="javascript:void(0);">甘肃</a>
+                            </li>
+                            <li>
+                                <span>H</span>
+                                <a href="javascript:void(0);">河北</a>
+                                <a href="javascript:void(0);">河南</a>
+                                <a href="javascript:void(0);">黑龙江</a>
+                                <a href="javascript:void(0);">海南</a>
+                                <a href="javascript:void(0);">湖北</a>
+                                <a href="javascript:void(0);">湖南</a>
+                            </li>
+                            <li>
+                                <span>J</span>
+                                <a href="javascript:void(0);">江苏</a>
+                                <a href="javascript:void(0);">吉林</a>
+                                <a href="javascript:void(0);">江西</a>
+                            </li>
+                            <li>
+                                <span>L</span>
+                                <a href="javascript:void(0);">辽宁</a>
+                            </li>
+                            <li>
+                                <span>N</span>
+                                <a href="javascript:void(0);">内蒙古</a>
+                                <a href="javascript:void(0);">宁夏</a>
+                            </li>
+                            <li>
+                                <span>Q</span>
+                                <a href="javascript:void(0);">青海</a>
+                            </li>
+                            <li>
+                                <span>S</span>
+                                <a href="javascript:void(0);">上海</a>
+                                <a href="javascript:void(0);">山东</a>
+                                <a href="javascript:void(0);">山西</a>
+                                <a href="javascript:void(0);" class="cur">四川</a>
+                                <a href="javascript:void(0);">陕西</a>
+                            </li>
+                            <li>
+                                <span>T</span>
+                                <a href="javascript:void(0);">台湾</a>
+                                <a href="javascript:void(0);">天津</a>
+                            </li>
+                            <li>
+                                <span>X</span>
+                                <a href="javascript:void(0);">西藏</a>
+                                <a href="javascript:void(0);">香港</a>
+                                <a href="javascript:void(0);">新疆</a>
+                            </li>
+                            <li>
+                                <span>Y</span>
+                                <a href="javascript:void(0);">云南</a>
+                            </li>
+                            <li>
+                                <span>Z</span>
+                                <a href="javascript:void(0);">浙江</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 发货城市结束 -->
+            <div class="top_nav">
+                <div class="fl">
+                    <a href="#" class="login">登录</a>
+                    <a href="#" class="regist">注册</a>
+                </div>
+                <div class="fr">
+                    <a href="#">我的订单</a>
+                    <span>|</span>
+                    <a href="#">收藏夹</a>
+                    <span>|</span>
+                    <a href="#">网站导航</a>
+                    <span>|</span>
+                    <a href="#">客户服务</a>
+                    <span>|</span>
+                    <a href="#" class="app">APP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 顶部导航条区域结束 -->
+    <div class="header">
+        <div class="header_box inner_c">
+            <h1 class="logo"><a href="index.html" title="极光严选">极光严选</a></h1>
+            <p>欢迎进入商铺快速申请通道</p>
+        </div>
+    </div>
+    <!-- 通道内容开始 -->
+    <div class="app_list inner_c clearfix">
+        <div class="prompt_list">
+            <h5>申请进度一览</h5>
+            <dl>
+                <dt>入驻帮助</dt>
+                <dd>商铺入驻流程介绍:</dd>
+                <dd>商铺入驻步骤介绍：</dd>
+                <dd>如何查询入驻进度？</dd>
+                <dd>怎么修改我的信息和资质？</dd>
+                <dd>入驻的基础前提条件是什么？</dd>
+            </dl>
+        </div>
+        <div class="tabulation">
+            <div class="list_nav">
+                <div class="nav_bg"></div>
+                <ul>
+                    <li class="finish">在线协议</li>
+                    <li>联系人信息</li>
+                    <li>公司认证信息</li>
+                    <li>开户银行信息</li>
+                    <li>店铺信息</li>
+                    <li>完成</li>
+                </ul>
+            </div>
+            <ul class="tab_con">
+                <li class="">
+                    <h5>请仔细阅读以下自营供应商入驻服务协议及规则</h5>
+                    <div class="article">
+                        用户使用“店铺在线入驻系统”前请认真阅读并理解本协议内容，本协议内容中以加粗方式显著标识的条款，请用户着重阅读、慎重考虑。<br>
+                        1.本协议的订立<br>
+                        在本网站（www.jxyx.com）依据《极光严选商城网站用户注册协议》登记注册，且符合本网站商家入驻标准的用户（以下简称“商家”），在同意本协议全部条款后，方有资格使用“极光严选商家在线入驻系统”（以下简称“入驻系统”）
+                        申请入驻。一经商家点击“我已阅读并且同意以上服务协议”按键，即意味着商家同意与本网站签订本协议并同意受本协议约束。<br>
+                        2.入驻系统使用说明<br>
+                        2.1商家通过入驻系统提出入驻申请，并按照要求填写商家信息、提供商家资质资料后，由本网站审核并与有合作意向的商家联系协商合作相关事宜，经双方协商一致线下签订书面《产品购销协议》（以下简称“购销协议”），且商家按照“购销协议”约定支付相应保证金等必要费用后，商家可申请开通后台系统操作权限。<br>
+                        2.2商家以及本网站通过入驻系统做出的申请、资料提交及确认等各类沟通，仅为双方合作的意向以及本网站对商家资格审核的必备程序，除遵守本协议各项约定外，对双方不产生法律约束力。双方间最终合作事宜及运营规则均以“购销协议”的约定及商家后台系统公示的各项规则为准。<br>
+                        3.商家权利义务<br>
+                        3.1 商家应查看本网站公示的入驻商家标准，并确保资质符合本网站公示的基本要求，商家知悉并理解本网站将结合自身业务发展情况对商家进行选择。<br>
+                        3.2商家应按照本网站要求诚信提供入驻申请所需资料并如实填写相关信息，商家应确保提供的申请资料及信息真实、准确、完整、合法有效，经本网站审核通过后，商家不得擅自修改替换相应资料及主要信息。如商家提供的申请资料及信息不合法、不真实、不准确的，商家需承担因此引起的相应责任及后果，并且本网站有权立即终止商家使用入驻系统的权利。<br>
+                        3.3商家使用入驻系统提交的所有内容应不含有木马等软件病毒、政治宣传、或其他任何形式的“垃圾信息”、违法信息，且商家应按本网站规则使用入驻系统，不得从事影响或可能影响本网站或入驻系统正常运营的行为，否则，本网站有权清除前述内容，并有权立即终止商家使用入驻系统的权利。<br>
+                        3.4商家应注意查看入驻系统公示的入驻申请结果，如审核通过的商家，则按照本网站工作人员的通知按要求办理入驻的相关手续；如审批未通过的商家，则可自本网站通过入驻系统将审批结果告知商家（需商家登陆入驻系统查看）之日起
+                        15 日内提出异议并提供相应资料，如审批仍未通过的，则商家同意提交的申请资料及信息本网站无需返还，由本网站自行处理。<br>
+                        3.5 商家不得以任何形式擅自转让或授权他人使用自己在本网站的用户帐号使用入驻系统，否则由此产生的不利后果均由商家自行承担。<br>
+                        4.本网站权利义务<br>
+                        4.1 本网站开发的入驻系统仅为商家申请入驻的平台，商家正式入驻后，将在商家后台系统中进行相关操作。<br>
+                        4.2本网站有权对商家提供的资料及信息进行审核，并有权结合自身业务情况对合作商家进行选择；本网站对商家提交资料及信息的审核均不代表本网站对审核内容的真实、合法、准确、完整性作出的确认，商家应对提供资料及信息承担相应的法律责任。<br>
+                        4.3 无论商家是否通过本网站的审核，本网站有权对商家提供的资料及信息予以留存并随时查阅，同时，本网站有义务对商家提供的资料予以保密，但国家行政机关、司法机关等国家机构调取资料的除外。<br>
+                        4.4 本网站会尽力维护本系统信息的安全，但法律规定的不可抗力，以及因为黑客入侵、计算机病毒侵入发作等原因造成商家资料泄露、丢失、被盗用、被篡改的，本网站不承担任何责任。<br>
+                        4.5 本网站应在现有技术支持的基础上确保入驻系统的正常运营，尽量避免入驻系统服务的中断给商家带来的不便。<br>
+                        5.知识产权<br>
+                        5.1 本网站开发的入驻系统及其包含的各类信息的知识产权归本网站所有者所有，受国家法律保护,本网站有权不时地对入驻系统的内容进行修改，并在入驻系统中公示，无须另行通知商家。<br>
+                        5.2 在法律允许的最大限度范围内，本网站所有者对本协议及入驻系统涉及的内容拥有解释权。<br>
+                        5.3 商家未经本网站所有者书面许可，不得擅自使用、非法全部或部分的复制、转载、抓取入驻系统中的信息，否则由此给本网站造成的损失，商家应予以全部赔偿。<br>
+                        6.入驻系统服务的终止<br>
+                        6.1 商家自行终止入驻申请，或商家经本网站审批未通过的，则入驻系统服务自行终止。<br>
+                        6.2 商家使用本网站或入驻系统时，如违反相关法律法规或者违反本协议规定的，本网站有权随时终止商家使用入驻系统。<br>
+                        7.本协议的修改<br>
+                        本协议可由本网站随时修订，并将修订后的协议公告于本网站及入驻系统，修订后的条款内容自公告时起生效，并成为本协议的一部分。<br>
+                        8.法律适用与争议解决<br>
+                        8.1 本协议适用中华人民共和国法律。<br>
+                        8.2 因本协议产生的任何争议，由双方协商解决，协商不成的，任何一方有权向有管辖权的中华人民共和国大陆地区法院提起诉讼。<br>
+                    </div>
+                    <label for="yuedu"><input type="checkbox" id="yuedu">我已阅读以上协议</label>
+                    <a href="javascirpt:;" class="fin_btn">同意</a>
+                </li>
+                <li class="contacts dis_none">
+                    <p><span>*</span>联系人姓名</p>
+                    <input type="text" placeholder="请输入联系人的姓名" ng-model="entity.linkmanName">
+                    <p><span>*</span>联系人手机号</p>
+                    <input type="text" placeholder="请输入联系人的手机号" ng-model="entity.linkmanPhone">
+                    <p><span>*</span>联系人QQ号</p>
+                    <input type="number" placeholder="请输入联系人的QQ号" ng-model="entity.linkmanQq">
+                    <p><span>*</span>联系人邮箱</p>
+                    <input type="email" placeholder="请输入联系人的邮箱" ng-model="entity.linkmanEmail">
+                    <div class="cont_btn">
+                        <a href="javascript:;" class="back_btn">上一步</a>
+                        <a href="javascript:;" class="next_btn">下一步</a>
+                    </div>
+                </li>
+                <li class="car_cer_info dis_none">
+                    <p><span>*</span>公司名称</p>
+                    <input type="text" placeholder="请输入公司名称" ng-model="entity.companyName">
+                    <p><span>*</span>营业执照号</p>
+                    <input type="text" placeholder="请输入营业执照号" ng-model="entity.companyLicense">
+                    <p><span>*</span>组织结构代码</p>
+                    <input type="text" placeholder="请输入组织结构代码" ng-model="entity.companyOrgcode">
+                    <p><span>*</span>公司地址</p>
+                    <input type="text" placeholder="请输入公司地址" ng-model="entity.companyAddress">
+                    <p><span>*</span>公司电话</p>
+                    <input type="number" placeholder="请输入公司电话" ng-model="entity.companyTel">
+                    <p><span>*</span>法人代表姓名</p>
+                    <input type="text" placeholder="请输入法人代表姓名" ng-model="entity.legalName">
+                    <p><span>*</span>法人代表证件</p>
+                    <input type="text" placeholder="请输入法人代表身份证件号" ng-model="entity.legalCardId">
+                    <div class="cont_btn">
+                        <a href="javascript:;" class="back_btn">上一步</a>
+                        <a href="javascript:;" class="next_btn">下一步</a>
+                    </div>
+                </li>
+                <li class="acc_open_info dis_none">
+                    <p><span>*</span>开户行名称</p>
+                    <input type="text" placeholder="请输入开户行名称" ng-model="entity.bankName">
+                    <p><span>*</span>开户行支行</p>
+                    <input type="text" placeholder="请输入开户行支行名称" ng-model="entity.bankBranch">
+                    <p><span>*</span>银行账号</p>
+                    <input type="text" placeholder="请输入银行账号" ng-model="entity.bankAccount">
+                    <div class="cont_btn">
+                        <a href="javascript:;" class="back_btn">上一步</a>
+                        <a href="javascript:;" class="next_btn">下一步</a>
+                    </div>
+                </li>
+                <li class="store_info dis_none">
+                    <p><span>*</span>系统登录名称</p>
+                        <input type="text" placeholder="系统登录名称"  ng-model="entity.loginName"/>
+                    <p><span>*</span>登陆密码</p>
+                    <input type="password" placeholder="系统登录密码"  ng-model="entity.password"/>
+                    <p><span>*</span>店铺名称</p>
+                    <input type="text" placeholder="请输入店铺名称"  ng-model="entity.name"/>
+                    <p class="xiaotishi">
+                        <span>*</span>
+                        提交后您将不能进行内容修改<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;您可以通过点击上一步对已填写的内容进行核对,确认填写无误后再进行提交
+                    </p>
+                    <div class="cont_btn">
+                        <a href="javascript:;" class="back_btn">上一步</a>
+                        <a href="javascript:;" class="next_btn" ng-click="save()">提交</a>
+                    </div>
+                </li>
+                <li class="complete clearfix dis_none">
+                    <img src="images/complete_icon.png" alt="">
+                    <p>
+                        您已经提交成功<br>
+                        我们将在1-3个工作日中对您提交的文件进行审核，请您等待...
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 通道内容结束 -->
+    <!-- 底部承诺内容部分 -->
+    <div class="promise inner_c">
+        <ul>
+            <li>
+                <h4>正品保障</h4>
+                <p>正品行货 放心购买</p>
+            </li>
+            <li>
+                <h4>满38包邮</h4>
+                <p>满38包邮 免运费</p>
+            </li>
+            <li>
+                <h4>天天低价</h4>
+                <p>天天低价 畅选无忧</p>
+            </li>
+            <li>
+                <h4>准时送达</h4>
+                <p>收货时间由你做主</p>
+            </li>
+        </ul>
+    </div>
+    <!-- 底部承诺内容部分结束 -->
+    <!-- 底部导航部分 -->
+    <div class="bottom_nav">
+        <div class="inner_c bottom_nav_c">
+            <dl>
+                <dt>新手上路</dt>
+                <dd>
+                    <a href="#">售后流程</a>
+                    <a href="#">购物流程</a>
+                    <a href="#">订购方式</a>
+                    <a href="#">隐私声明</a>
+                    <a href="#">推荐分享说明</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>配送与支付</dt>
+                <dd>
+                    <a href="#">货到付款区域</a>
+                    <a href="#">配送支付查询</a>
+                    <a href="#">支付方式说明</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>会员中心</dt>
+                <dd>
+                    <a href="#">资金管理</a>
+                    <a href="#">我的收藏</a>
+                    <a href="#">我的订单</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>服务保证</dt>
+                <dd>
+                    <a href="#">退换货原则</a>
+                    <a href="#">售后服务保证</a>
+                    <a href="#">产品质量保证</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>联系我们</dt>
+                <dd>
+                    <a href="#">网站故障报告</a>
+                    <a href="#">购物咨询</a>
+                    <a href="#">投诉与建议</a>
+                </dd>
+            </dl>
+            <!-- 关于我们 -->
+            <div class="aboutus">
+                <a href="#" class="sina">新浪微博</a>
+                <a href="#" class="qq">腾讯微博</a>
+                <p>
+                    <span>服务热线：</span>
+                    <span>400-123-5564</span>
+                </p>
+            </div>
+            <div class="focus">
+                <img src="images/ewm.png" class="ewm">
+                <img src="images/saoyisao.png" class=>
+            </div>
+        </div>
+    </div>
+    <!-- 底部导航部分结束 -->
+    <!-- 底部其他信息部分 -->
+    <div class="footer">
+        <div class="inner_c">
+            <p>备案/许可证编号：京ICP备12008899号-1-www.jgxy.cc Copyright © 2018-2018 极光严选网 All Rights Reserved. 复制必究 , Technical
+                Support:
+                Dgg Group</p>
+            <p>
+                <img src="images/footer_1.gif"><img src="images/footer_2.gif"><img src="images/footer_3.gif"><img
+                    src="images/footer_4.gif"><img src="images/footer_5.gif"><img src="images/footer_6.gif">
+            </p>
+        </div>
+    </div>
+    <!-- 底部其他信息部分结束 -->
+    <!-- 登录页开始 -->
+    <div class="mask log_on">
+        <div class="log_box">
+            <div class="log_tit">
+                <a href="javascript:;">账号登录</a>
+                <span>|</span>
+                <a href="javascript:;">手机登录</a>
+            </div>
+            <form action="">
+                <input type="text" placeholder="请输入用户名">
+                <input type="password" placeholder="请输入密码">
+                <div class="assist">
+                    <span>
+                        <input type="checkbox">保存登录信息
+                    </span>
+                    <a href="#" class="for_pass">忘记密码</a>
+                </div>
+                <input type="submit" value="登录" class="log_btn">
+            </form>
+            <span class="ple_reg">没有账号，<a href="javascript:;" class="reg_now">立即注册</a></span>
+            <a href="javascript:;" class="log_close">×</a>
+        </div>
+    </div>
+    <!-- 登录页结束 -->
+    <!-- 注册页面开始 -->
+    <div class="mask register">
+        <div class="reg_box">
+            <h4>注册</h4>
+            <form action="">
+                <input type="text" placeholder="请输入用户名">
+                <input type="password" placeholder="请输入密码">
+                <input type="password" placeholder="请输入密码">
+                <input type="email" placeholder="请输入邮箱">
+                <input type="number" placeholder="请输入手机号码">
+                <input type="text" placeholder="请输入验证码">
+                <div class="assist">
+                    <input type="checkbox">我已阅读并接受
+                    <a href="#" class="user_agr">《用户协议》</a>
+                </div>
+                <input type="submit" value="注册" class="reg_btn">
+            </form>
+            <span class="ple_reg">已有账号，<a href="javascript:;" class="enroll">立即登录</a></span>
+            <a href="javascript:;" class="log_close">×</a>
+        </div>
+    </div>
+    <!-- 注册页面结束 -->
+</body>
+<script type="text/javascript" src="js/custom/seller/seller.module.js"></script>
+<script type="text/javascript" src="js/custom/seller/seller.controller.js"></script>
+</html>

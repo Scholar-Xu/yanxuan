@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--开启SpringMVC注解支持-->
+    <mvc:annotation-driven />
+
+    <!--启用默认的servlet-->
+    <mvc:default-servlet-handler />
+
+    <!-- 引用dubbo 服务 -->
+    <dubbo:application name="yanxuan_seller_server" />
+    <dubbo:registry address="zookeeper://192.168.142.129:2181" timeout="50000"/>
+    <dubbo:annotation package="com.itjiguang.yanxuan.seller.controller" />
+
+    <!-- 配置多媒体解析器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+        <property name="maxUploadSize" value="5242880"></property>
+    </bean>
+</beans>

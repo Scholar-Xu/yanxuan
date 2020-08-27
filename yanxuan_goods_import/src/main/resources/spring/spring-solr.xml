@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:solr="http://www.springframework.org/schema/data/solr" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/data/solr http://www.springframework.org/schema/data/solr/spring-solr.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--SolrJ的客户端-->
+    <solr:solr-client id="solrClient" url="http://localhost:8080/solr" />
+
+    <!--SolrTemplate-->
+    <bean class="org.springframework.data.solr.core.SolrTemplate">
+        <constructor-arg name="solrClient" ref="solrClient"/>
+        <constructor-arg name="core" value="goods"/>
+        <property name="solrConverter" ref="mappingSolrConverter" />
+    </bean>
+
+    <!-- 事务管理 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- 开启声明式事物 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--批量数据导入的服务-->
+    <bean id="goodsImportService" class="com.itjiguang.yanxuan.solr.GoodsImportService"/>
+
+
+    <!--CustomConversions-->
+    <bean id="customConversions" class="org.springframework.data.solr.core.convert.CustomConversions">
+        <constructor-arg name="converters">
+            <list>
+                <bean class="com.itjiguang.yanxuan.converter.CustomConverter" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!--配置MappingSolrConverter-->
+    <bean id="mappingSolrConverter" class="org.springframework.data.solr.core.convert.MappingSolrConverter">
+        <constructor-arg name="mappingContext" >
+            <bean class="org.springframework.data.solr.core.mapping.SimpleSolrMappingContext"/>
+        </constructor-arg>
+        <property name="customConversions" ref="customConversions" />
+    </bean>
+</beans>

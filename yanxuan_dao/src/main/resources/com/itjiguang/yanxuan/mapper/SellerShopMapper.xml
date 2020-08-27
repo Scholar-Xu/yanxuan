@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itjiguang.yanxuan.mapper.SellerShopMapper">
+  <resultMap id="BaseResultMap" type="com.itjiguang.yanxuan.model.SellerShop">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+    <result column="linkman_name" jdbcType="VARCHAR" property="linkmanName" />
+    <result column="linkman_phone" jdbcType="VARCHAR" property="linkmanPhone" />
+    <result column="linkman_email" jdbcType="VARCHAR" property="linkmanEmail" />
+    <result column="linkman_qq" jdbcType="VARCHAR" property="linkmanQq" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_license" jdbcType="VARCHAR" property="companyLicense" />
+    <result column="company_orgcode" jdbcType="VARCHAR" property="companyOrgcode" />
+    <result column="company_create" jdbcType="VARCHAR" property="companyCreate" />
+    <result column="company_area" jdbcType="VARCHAR" property="companyArea" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="company_tel" jdbcType="VARCHAR" property="companyTel" />
+    <result column="company_major" jdbcType="VARCHAR" property="companyMajor" />
+    <result column="legal_name" jdbcType="VARCHAR" property="legalName" />
+    <result column="legal_card_id" jdbcType="VARCHAR" property="legalCardId" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_branch" jdbcType="VARCHAR" property="bankBranch" />
+    <result column="category_ids" jdbcType="VARCHAR" property="categoryIds" />
+    <result column="brand_ids" jdbcType="VARCHAR" property="brandIds" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, account_id, linkman_name, linkman_phone, linkman_email, linkman_qq, company_name, 
+    company_license, company_orgcode, company_create, company_area, company_address, 
+    company_tel, company_major, legal_name, legal_card_id, bank_account, bank_name, bank_branch, 
+    category_ids, brand_ids, status, create_date, update_date
+  </sql>
+  <select id="selectByExample" parameterType="com.itjiguang.yanxuan.model.SellerShopExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from seller_shop
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from seller_shop
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from seller_shop
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.itjiguang.yanxuan.model.SellerShopExample">
+    delete from seller_shop
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.itjiguang.yanxuan.model.SellerShop">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into seller_shop (id, name, account_id, 
+      linkman_name, linkman_phone, linkman_email, 
+      linkman_qq, company_name, company_license, 
+      company_orgcode, company_create, company_area, 
+      company_address, company_tel, company_major, 
+      legal_name, legal_card_id, bank_account, 
+      bank_name, bank_branch, category_ids, 
+      brand_ids, status, create_date, 
+      update_date)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{accountId,jdbcType=BIGINT}, 
+      #{linkmanName,jdbcType=VARCHAR}, #{linkmanPhone,jdbcType=VARCHAR}, #{linkmanEmail,jdbcType=VARCHAR}, 
+      #{linkmanQq,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{companyLicense,jdbcType=VARCHAR}, 
+      #{companyOrgcode,jdbcType=VARCHAR}, #{companyCreate,jdbcType=VARCHAR}, #{companyArea,jdbcType=VARCHAR}, 
+      #{companyAddress,jdbcType=VARCHAR}, #{companyTel,jdbcType=VARCHAR}, #{companyMajor,jdbcType=VARCHAR}, 
+      #{legalName,jdbcType=VARCHAR}, #{legalCardId,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{bankBranch,jdbcType=VARCHAR}, #{categoryIds,jdbcType=VARCHAR}, 
+      #{brandIds,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itjiguang.yanxuan.model.SellerShop">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into seller_shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      id,
+      <if test="name != null">
+        name,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="linkmanName != null">
+        linkman_name,
+      </if>
+      <if test="linkmanPhone != null">
+        linkman_phone,
+      </if>
+      <if test="linkmanEmail != null">
+        linkman_email,
+      </if>
+      <if test="linkmanQq != null">
+        linkman_qq,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyLicense != null">
+        company_license,
+      </if>
+      <if test="companyOrgcode != null">
+        company_orgcode,
+      </if>
+      <if test="companyCreate != null">
+        company_create,
+      </if>
+      <if test="companyArea != null">
+        company_area,
+      </if>
+      <if test="companyAddress != null">
+        company_address,
+      </if>
+      <if test="companyTel != null">
+        company_tel,
+      </if>
+      <if test="companyMajor != null">
+        company_major,
+      </if>
+      <if test="legalName != null">
+        legal_name,
+      </if>
+      <if test="legalCardId != null">
+        legal_card_id,
+      </if>
+      <if test="bankAccount != null">
+        bank_account,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankBranch != null">
+        bank_branch,
+      </if>
+      <if test="categoryIds != null">
+        category_ids,
+      </if>
+      <if test="brandIds != null">
+        brand_ids,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=BIGINT},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="linkmanName != null">
+        #{linkmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanPhone != null">
+        #{linkmanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanEmail != null">
+        #{linkmanEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanQq != null">
+        #{linkmanQq,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLicense != null">
+        #{companyLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="companyOrgcode != null">
+        #{companyOrgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCreate != null">
+        #{companyCreate,jdbcType=VARCHAR},
+      </if>
+      <if test="companyArea != null">
+        #{companyArea,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        #{companyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="companyMajor != null">
+        #{companyMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="legalName != null">
+        #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCardId != null">
+        #{legalCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankBranch != null">
+        #{bankBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryIds != null">
+        #{categoryIds,jdbcType=VARCHAR},
+      </if>
+      <if test="brandIds != null">
+        #{brandIds,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.itjiguang.yanxuan.model.SellerShopExample" resultType="java.lang.Long">
+    select count(*) from seller_shop
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update seller_shop
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountId != null">
+        account_id = #{record.accountId,jdbcType=BIGINT},
+      </if>
+      <if test="record.linkmanName != null">
+        linkman_name = #{record.linkmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkmanPhone != null">
+        linkman_phone = #{record.linkmanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkmanEmail != null">
+        linkman_email = #{record.linkmanEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkmanQq != null">
+        linkman_qq = #{record.linkmanQq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyLicense != null">
+        company_license = #{record.companyLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyOrgcode != null">
+        company_orgcode = #{record.companyOrgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyCreate != null">
+        company_create = #{record.companyCreate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyArea != null">
+        company_area = #{record.companyArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAddress != null">
+        company_address = #{record.companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyTel != null">
+        company_tel = #{record.companyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyMajor != null">
+        company_major = #{record.companyMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalName != null">
+        legal_name = #{record.legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalCardId != null">
+        legal_card_id = #{record.legalCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankAccount != null">
+        bank_account = #{record.bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankName != null">
+        bank_name = #{record.bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankBranch != null">
+        bank_branch = #{record.bankBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryIds != null">
+        category_ids = #{record.categoryIds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandIds != null">
+        brand_ids = #{record.brandIds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateDate != null">
+        update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update seller_shop
+    set id = #{record.id,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      account_id = #{record.accountId,jdbcType=BIGINT},
+      linkman_name = #{record.linkmanName,jdbcType=VARCHAR},
+      linkman_phone = #{record.linkmanPhone,jdbcType=VARCHAR},
+      linkman_email = #{record.linkmanEmail,jdbcType=VARCHAR},
+      linkman_qq = #{record.linkmanQq,jdbcType=VARCHAR},
+      company_name = #{record.companyName,jdbcType=VARCHAR},
+      company_license = #{record.companyLicense,jdbcType=VARCHAR},
+      company_orgcode = #{record.companyOrgcode,jdbcType=VARCHAR},
+      company_create = #{record.companyCreate,jdbcType=VARCHAR},
+      company_area = #{record.companyArea,jdbcType=VARCHAR},
+      company_address = #{record.companyAddress,jdbcType=VARCHAR},
+      company_tel = #{record.companyTel,jdbcType=VARCHAR},
+      company_major = #{record.companyMajor,jdbcType=VARCHAR},
+      legal_name = #{record.legalName,jdbcType=VARCHAR},
+      legal_card_id = #{record.legalCardId,jdbcType=VARCHAR},
+      bank_account = #{record.bankAccount,jdbcType=VARCHAR},
+      bank_name = #{record.bankName,jdbcType=VARCHAR},
+      bank_branch = #{record.bankBranch,jdbcType=VARCHAR},
+      category_ids = #{record.categoryIds,jdbcType=VARCHAR},
+      brand_ids = #{record.brandIds,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=CHAR},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itjiguang.yanxuan.model.SellerShop">
+    update seller_shop
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+      <if test="linkmanName != null">
+        linkman_name = #{linkmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanPhone != null">
+        linkman_phone = #{linkmanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanEmail != null">
+        linkman_email = #{linkmanEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanQq != null">
+        linkman_qq = #{linkmanQq,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLicense != null">
+        company_license = #{companyLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="companyOrgcode != null">
+        company_orgcode = #{companyOrgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCreate != null">
+        company_create = #{companyCreate,jdbcType=VARCHAR},
+      </if>
+      <if test="companyArea != null">
+        company_area = #{companyArea,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        company_tel = #{companyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="companyMajor != null">
+        company_major = #{companyMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="legalName != null">
+        legal_name = #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCardId != null">
+        legal_card_id = #{legalCardId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankBranch != null">
+        bank_branch = #{bankBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryIds != null">
+        category_ids = #{categoryIds,jdbcType=VARCHAR},
+      </if>
+      <if test="brandIds != null">
+        brand_ids = #{brandIds,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itjiguang.yanxuan.model.SellerShop">
+    update seller_shop
+    set name = #{name,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=BIGINT},
+      linkman_name = #{linkmanName,jdbcType=VARCHAR},
+      linkman_phone = #{linkmanPhone,jdbcType=VARCHAR},
+      linkman_email = #{linkmanEmail,jdbcType=VARCHAR},
+      linkman_qq = #{linkmanQq,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      company_license = #{companyLicense,jdbcType=VARCHAR},
+      company_orgcode = #{companyOrgcode,jdbcType=VARCHAR},
+      company_create = #{companyCreate,jdbcType=VARCHAR},
+      company_area = #{companyArea,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      company_tel = #{companyTel,jdbcType=VARCHAR},
+      company_major = #{companyMajor,jdbcType=VARCHAR},
+      legal_name = #{legalName,jdbcType=VARCHAR},
+      legal_card_id = #{legalCardId,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_branch = #{bankBranch,jdbcType=VARCHAR},
+      category_ids = #{categoryIds,jdbcType=VARCHAR},
+      brand_ids = #{brandIds,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

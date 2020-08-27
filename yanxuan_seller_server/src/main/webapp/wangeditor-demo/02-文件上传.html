@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入Wangeditor相关的js文件-->
+    <script type="text/javascript" src="../plugins/wangEditor/wangEditor.min.js"></script>
+</head>
+<body>
+    <div id="demo"></div>
+</body>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    // 创建Editor
+    var editor = new E("#demo");
+    // 自定义属性开启本上传
+    editor.customConfig.uploadImgServer = "/upload";
+    editor.customConfig.uploadFileName = "file";
+    // 页面展示效果的初始化
+    editor.create();
+</script>
+</html>

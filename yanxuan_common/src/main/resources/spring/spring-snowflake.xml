@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置 tiwtter的分布式ID生成工具类 -->
+    <bean id="snowFlake" class="com.itjiguang.yanxuan.utils.SnowFlake">
+        <!-- 机器标识 -->
+        <constructor-arg name="machineId" value="0"/>
+        <!-- 数据中心 -->
+        <constructor-arg name="datacenterId" value="0"/>
+    </bean>
+</beans>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>品牌管理</title>
+
+</head>
+<body>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#/">首页</a>
+    </li>
+    <li class="breadcrumb-item active">品牌管理</li>
+</ol>
+
+<div class="card mb-3">
+    <!-- 表格上方 -->
+    <div class="card-header">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal">新增</button>
+        <div class="row float-right">
+            <form class="d-md-inline-block form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="品牌的中文名称" aria-label="Search" ng-model="name"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" ng-click="pageQuery()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>品牌ID</th>
+                    <th>品牌名称（中文）</th>
+                    <th>品牌名称（英文）</th>
+                    <th>品牌首字母</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tfoot>
+
+                </tfoot>
+                <tbody>
+                <tr ng-repeat="brand in brandList">
+                    <td>{{brand.id}}</td>
+                    <td>{{brand.name}}</td>
+                    <td>{{brand.englishName}}</td>
+                    <td>{{brand.firstChar}}</td>
+                    <td>{{statusArray[brand.isDelete]}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal" ng-click="initData(brand)">修改
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="delete(brand.id)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--<div class="row">
+            <div class="col-sm-12 col-md-3">
+                <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
+                    共 {{total}} 条数据
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" ng-click="prePage()" ng-class="{disabled: pageOption.currentPage ===1}">
+                            <a class="page-link" data-target="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li ng-repeat="num in pageArray" class="page-item" ng-class="{active: num === pageOption.currentPage}" ng-click="changePage(num)"><a class="page-link" data-target="#">{{num}}</a></li>
+                       &lt;!&ndash; <li class="page-item"><a class="page-link" data-target="#">2</a></li>
+                        <li class="page-item"><a class="page-link" data-target="#">3</a></li>&ndash;&gt;
+                        <li class="page-item" ng-click="nextPage()" ng-class="{disabled: totalPage === pageOption.currentPage}">
+                            <a class="page-link" data-target="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-12 col-md-3 row float-right">
+                <div class="col-sm-7 col-form-label text-right">每页显示</div>
+                <div class="col-sm-3 align-items-md-center">
+                    <select class="form-control">
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+                <div class="col-sm-2 col-form-label text-left">条</div>
+            </div>
+        </div>-->
+        <pagination></pagination>
+    </div>
+</div>
+<!-- 编辑数据的窗口 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="newModalLabel">品牌详情</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="brandName" class="col-sm-4 col-form-label">品牌名称（中文）</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="brandName" name="name" ng-model="brand.name" placeholder="请输入品牌的中文名称">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="englishName" class="col-sm-4 col-form-label">品牌名称（英文）</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="englishName" name="englishName" ng-model="brand.englishName"
+                                   placeholder="请输入品牌的英文名称">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="firstChar" class="col-sm-4 col-form-label">名称首字母</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="firstChar" name="firstChar" ng-model="brand.firstChar"
+                                   placeholder="请输入品牌名称首字母">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="website" class="col-sm-4 col-form-label">品牌网址</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="website" name="website" ng-model="brand.website"
+                                   placeholder="请输入品牌的品牌网址">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
